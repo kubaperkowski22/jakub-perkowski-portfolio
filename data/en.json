@@ -1,0 +1,69 @@
+{
+  "lang": "en",
+  "name_title": "Jakub Perkowski - Software Engineer",
+  "nav": {
+    "toggle_all": "Expand / Collapse all",
+    "about": "About me",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "About me:",
+    "basic_info_title": "Basic Information",
+    "basic_info_desc": "Software Engineer with 2.5+ years of experience developing software solutions using Python and the .NET ecosystem. I hold both a Bachelor's and a Master's degree in Computer Science, specializing in Software Engineering. I combine software engineering practices with expertise in Machine Learning and Neural Networks. I am seeking opportunities to build scalable software and AI-driven solutions.",
+    "experience_title": "Experience",
+    "experience": [
+      {
+        "company": "PLUM Sp. z o.o.",
+        "dates": "2023 - 2026",
+        "tasks": [
+          "Architecting and implementing core modules for driver monitoring applications using Python and .NET.",
+          "Designing, developing, and implementing new software applications to improve company productivity.",
+          "Streamlining software deployment processes by configuring GitLab CI/CD pipelines.",
+          "Automating data processing workflows, reducing the need for manual work.",
+          "Resolving critical production bugs in legacy systems.",
+          "Collaborating within a Scrum team, using Git for version control and Jira for task management."
+        ]
+      }
+    ],
+    "projects_title": "Projects",
+    "projects": [
+      {
+        "name": "Deep Neural Networks in Survival Analysis",
+        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Developing custom deep neural network models based on existing models and comparing their effectiveness with classical survival analysis methods on 7 large datasets of oncology patients (over 600,000 records)."
+      },
+      {
+        "name": "DiagnoseMe",
+        "description": "(C#, WPF, LLM, OpenAI, API) Integrating the OpenAI API into a C# desktop application to provide AI-assisted initial medical diagnosis and recommendations for further action based on the user's initial description of symptoms."
+      },
+      {
+        "name": "News Extractor (NLP)",
+        "description": "(Scikit-Learn, spaCy, Pandas, Matplotlib) Extracting event information from news articles (who, what, where, when). Classifying event types into six different categories. Training dataset containing over 2,000 sentences, including the NO_EVENT category."
+      }
+    ],
+    "education_title": "Education",
+    "education": [
+      {
+        "name": "Master's Degree, Computer Science, Specialization: Software Engineering",
+        "description": "Białystok University of Technology, February 2025 - October 2026 "
+      },
+      {
+        "name": "Bachelor's Degree, Computer Science",
+        "description": "Białystok University of Technology, October 2021 - February 2025"
+      }
+    ],
+    "skills_title": "Skills",
+    "skills_list": ["Python", "Machine Learning", "Deep Learning", "Neural Networks", "PyTorch", "TensorFlow", "LLMs", "Scikit-Learn", "NumPy", "Pandas", "SQL", "API Development (REST)", "C# (.NET)", "Git", "GitHub", "GitLab", "CI/CD Pipelines", "Databases", "Matplotlib", "C++", "C"],
+    "languages_title": "Languages",
+    "languages_list": ["Polish (native)", "English (advanced)"]
+  },
+  "cv_button": "Download CV in PDF format",
+  "contact_page": {
+    "name": "Jakub Perkowski",
+    "location": "Białystok, Poland",
+    "email": "kubaperkowski22@gmail.com",
+    "phone": "+48 507 706 414",
+    "linkedin_url": "https://www.linkedin.com/in/jakub-perkowski-393a59244/",
+    "linkedin_text": "LinkedIn"
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ content.contact_page.name }} - Kontakt</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="brand">{{ content.name_title }}</div>
+        <nav class="nav-menu">
+            <a href="/?lang={{ current_lang }}#o-mnie" class="nav-item">{{ content.nav.about }}</a>
+            <span class="separator">|</span>
+            <a href="/?lang={{ current_lang }}#projekty" class="nav-item">{{ content.nav.projects }}</a>
+            <span class="separator">|</span>
+            <a href="/kontakt?lang={{ current_lang }}" class="nav-item active">{{ content.nav.contact }}</a>
+            <span class="separator">|</span>
+            <div class="lang-switcher">
+                {% if current_lang == 'pl' %}
+                    <a href="/kontakt?lang=en" class="lang-icon" title="Przełącz na angielski"><span class="fi fi-gb"></span></a>
+                {% else %}
+                    <a href="/kontakt?lang=pl" class="lang-icon" title="Switch to Polish"><span class="fi fi-pl"></span></a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content contact-container">
+        <div class="contact-card">
+            <h1 class="contact-name">{{ content.contact_page.name }}</h1>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>{{ content.contact_page.location }}</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i data-lucide="mail"></i>
+                    <a href="mailto:{{ content.contact_page.email }}">{{ content.contact_page.email }}</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i data-lucide="phone"></i>
+                    <a href="tel:{{ content.contact_page.phone }}">{{ content.contact_page.phone }}</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i data-lucide="globe"></i>
+                    <a href="{{ content.contact_page.linkedin_url }}" target="_blank" rel="noopener noreferrer">{{ content.contact_page.linkedin_text }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

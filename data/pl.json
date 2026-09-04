@@ -1,0 +1,69 @@
+{
+  "lang": "pl",
+  "name_title": "Jakub Perkowski - Software Engineer",
+  "nav": {
+    "toggle_all": "Rozwiń / Zwiń wszystkie",
+    "about": "O mnie",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "about": {
+    "title": "O mnie:",
+    "basic_info_title": "Podstawowe informacje",
+    "basic_info_desc": "Inżynier oprogramowania z ponad 2,5-letnim doświadczeniem w tworzeniu rozwiązań programistycznych z wykorzystaniem języka Python oraz ekosystemu .NET. Posiadam tytuł inżyniera oraz magistra informatyki ze specjalizacją w zakresie inżynierii oprogramowania. Łączę praktyki inżynierii oprogramowania z wiedzą z zakresu uczenia maszynowego i sieci neuronowych. Poszukuję możliwości tworzenia skalowalnego oprogramowania oraz rozwiązań wykorzystujących sztuczną inteligencję.",
+    "experience_title": "Doświadczenie",
+    "experience": [
+      {
+        "company": "PLUM Sp. z o.o.",
+        "dates": "2023 - 2026",
+        "tasks": [
+          "Projektowanie architektury i implementacja kluczowych modułów aplikacji do monitorowania sterowników z wykorzystaniem języka Python i .NET.",
+          "Projektowanie, tworzenie i implementacja nowych aplikacji programistycznych, zwiększających produktywność firmy.",
+          "Usprawnienie procesów wdrażania oprogramowania poprzez konfigurację potoków GitLab CI/CD.",
+          "Automatyzacja procesów przetwarzania danych, ograniczająca konieczność wykonywania pracy manualnej.",
+          "Rozwiązywanie krytycznych błędów produkcyjnych w starszych systemach.",
+          "Współpraca w zespole Scrum z wykorzystaniem Git do kontroli wersji oraz Jira do zarządzania zadaniami."
+        ]
+      }
+    ],
+    "projects_title": "Projekty",
+    "projects": [
+      {
+        "name": "Głębokie sieci neuronowe w analizie przeżycia",
+        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Stworzenie autorskich modeli głębokich sieci neuronowych opartych na istniejących już modelach oraz porównanie ich skuteczności z klasycznymi metodami analizy przeżycia na 7 dużych zbiorach danych pacjentów onkologicznych (ponad 600 tyś. rekordów)."
+      },
+      {
+        "name": "DiagnoseMe",
+        "description": "(C#, WPF, LLM, OpenAI, API) Integracja API OpenAI z aplikacją desktopową w języku C# w celu zapewnienia wstępnej diagnostyki medycznej wspomaganej i rekomendacji dalszego postępowania przez sztuczną inteligencję, opartej na wstępnym opisie objawów użytkownika."
+      },
+      {
+        "name": "News Extractor (NLP)",
+        "description": "(Scikit-Learn, spaCy, Pandas, Matplotlib) Ekstrakcja informacji o wydarzeniach z artykułów informacyjnych (kto, co, gdzie, kiedy). Klasyfikacja typów wydarzeń do sześciu różnych kategorii. Zbiór treningowy zawierający ponad 2000 zdań, w tym kategorię NO_EVENT."
+      }
+    ],
+    "education_title": "Wykształcenie",
+    "education": [
+      {
+        "name": "Studia magisterskie, Informatyka, specjalizacja: Inżynieria Oprogramowania",
+        "description": "Politechnika Białostocka, Luty 2025 - Październik 2026 "
+      },
+      {
+        "name": "Studia inżynierskie, Informatyka",
+        "description": "Politechnika Białostocka, Październik 2021 - Luty 2025"
+      }
+    ],
+    "skills_title": "Umiejętności",
+    "skills_list": ["Python", "Machine Learning", "Deep Learning", "Neural Networks", "PyTorch", "TensorFlow", "LLMs", "Scikit-Learn", "NumPy", "Pandas", "SQL", "API Development (REST)", "C# (.NET)", "Git", "GitHub", "GitLab", "CI/CD Pipelines", "Databases", "Matplotlib", "C++", "C"],
+    "languages_title": "Języki",
+    "languages_list": ["Polski (ojczysty)", "Angielski (zaawansowany)"]
+  },
+  "cv_button": "Pobierz CV w formacie PDF",
+  "contact_page": {
+    "name": "Jakub Perkowski",
+    "location": "Białystok, Poland",
+    "email": "kubaperkowski22@gmail.com",
+    "phone": "+48 507 706 414",
+    "linkedin_url": "https://www.linkedin.com/in/jakub-perkowski-393a59244/",
+    "linkedin_text": "LinkedIn"
+  }
+}
