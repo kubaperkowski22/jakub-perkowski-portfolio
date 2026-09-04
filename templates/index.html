@@ -1,42 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ current_lang }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ content.name_title }}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header class="top-bar">
-        <div class="brand">
-            {{ content.name_title }}
-        </div>
-        <nav class="nav-menu">
-            <a href="/o-mnie?lang={{ current_lang }}" class="nav-item active">{{ content.nav.about }}</a>
-            <span class="separator">|</span>
-            <a href="#projekty" class="nav-item">{{ content.nav.projects }}</a>
-            <span class="separator">|</span>
-            <a href="/kontakt?lang={{ current_lang }}" class="nav-item">{{ content.nav.contact }}</a>
-            <span class="separator">|</span>
-            
-            <div class="lang-switcher">
-                {% if current_lang == 'pl' %}
-                    <a href="/?lang=en" class="lang-icon" title="Przełącz na angielski">
-                        <span class="fi fi-gb"></span>
-                    </a>
-                {% else %}
-                    <a href="/?lang=pl" class="lang-icon" title="Switch to Polish">
-                        <span class="fi fi-pl"></span>
-                    </a>
-                {% endif %}
-            </div>
-        </nav>
-    </header>
+    {% block title %}
+    Jakub Perkowski - Software Engineer
+    {% endblock %}
 
-    <main class="main-content">
+    {% block content %}
+
         <section id="o-mnie" class="about-section">
             <div class="section-header">
                 <h1 class="main-heading" style="margin-bottom: 0;">{{ content.about.title }}</h1>
@@ -120,31 +89,14 @@
         </section>
 
         <div class="download-container">
-            <a href="/download-cv" class="download-btn">
+            <a href="{{ request.url_for('download_cv') }}" class="download-btn">
                 <span>{{ content.cv_button }}</span>
                 <i data-lucide="download"></i>
             </a>
         </div>
-    </main>
+    
+    {% endblock %}
 
-    <script>
-        lucide.createIcons();
-
-        // skrypt do  rozwin/zwin
-        const toggleBtn = document.getElementById('toggle-all-btn');
-        const detailsElements = document.querySelectorAll('details.info-group');
-        let isExpanded = false;
-
-        toggleBtn.addEventListener('click', () => {
-            isExpanded = !isExpanded;
-            detailsElements.forEach(detail => {
-                if (isExpanded) {
-                    detail.setAttribute('open', '');
-                } else {
-                    detail.removeAttribute('open');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    {% block scripts %}
+    <script src="{{ request.url_for('static', path='js/about.js') }}"></script>
+    {% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Jakub Perkowski - {{ content.nav.projects }}
+{% endblock %}
+
+{% block content %}
+
+<section>
+    <h1>{{ content.nav.projects }}</h1>
+
+    {% if current_lang == "pl" %}
+        <p>Strona projektów jest w trakcie przygotowania.</p>
+    {% else %}
+        <p>The projects page is currently under development.</p>
+    {% endif %}
+</section>
+
+{% endblock %}
