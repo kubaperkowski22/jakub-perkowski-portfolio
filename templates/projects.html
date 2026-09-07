@@ -1,19 +1,104 @@
 {% extends "base.html" %}
 
 {% block title %}
-Jakub Perkowski - {{ content.nav.projects }}
+Jakub Perkowski - {{ content.projects_page.title }}
 {% endblock %}
+
+{% block main_class %}projects-layout{% endblock %}
 
 {% block content %}
 
-<section>
-    <h1>{{ content.nav.projects }}</h1>
+{% set page = content.projects_page %}
 
-    {% if current_lang == "pl" %}
-        <p>Strona projektów jest w trakcie przygotowania.</p>
-    {% else %}
-        <p>The projects page is currently under development.</p>
-    {% endif %}
+<section class="projects-page">
+
+    <div class="projects-intro">
+        <h1 class="main-heading">{{ page.title }}</h1>
+        <p>{{ page.subtitle }}</p>
+    </div>
+
+    <div class="projects-grid">
+
+        {% for project in page.projects %}
+
+        <article
+            class="project-card{% if loop.first and project.featured %} project-card--hero{% endif %}"
+        >
+
+            <div class="project-card__meta">
+                {% if project.featured %}
+                    <span class="project-badge project-badge--featured">
+                        {{ page.labels.featured }}
+                    </span>
+                {% endif %}
+
+                <span class="project-badge">
+                    {{ page.status_labels[project.status] }}
+                </span>
+            </div>
+
+            <p class="project-card__type">
+                {{ page.type_labels[project.type] }}
+            </p>
+
+            <h2 class="project-card__title">
+                {{ project.name }}
+            </h2>
+
+            <p class="project-card__summary">
+                {{ project.summary }}
+            </p>
+
+            <div class="project-card__technologies">
+                {% for technology in project.technologies %}
+                    <span class="technology-badge">
+                        {{ technology }}
+                    </span>
+                {% endfor %}
+            </div>
+
+            <div class="project-card__highlights">
+                <h3>{{ page.labels.highlights }}</h3>
+
+                <ul>
+                    {% for highlight in project.highlights %}
+                        <li>{{ highlight }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="project-card__actions">
+                {% if project.github_url %}
+                    <a
+                        href="{{ request.url_for('project_detail', slug=project.slug).include_query_params(lang=current_lang) }}"
+                        class="project-link project-link--primary"
+                    >
+                        <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        {{ page.labels.view_details }}
+                    </a>
+                    <a
+                        href="{{ project.github_url }}"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="{{ request.url_for('static', path='img/GitHub_Invertocat_White.svg') }}"
+                            class="project-link__icon"
+                            alt=""
+                            aria-hidden="true"
+                        >
+                        {{ page.labels.github }}
+                    </a>
+                {% endif %}
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
 </section>
 
 {% endblock %}

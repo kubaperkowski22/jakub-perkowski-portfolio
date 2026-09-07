@@ -18,56 +18,84 @@
 <body>
 
     <header class="top-bar">
+
         <div class="brand">
             {{ content.name_title }}
         </div>
-        <nav class="nav-menu">
-            
+
+        <nav
+            id="main-navigation"
+            class="nav-menu"
+            aria-label="{% if current_lang == 'pl' %}Nawigacja główna{% else %}Main navigation{% endif %}"
+        >
             <a
                 href="{{ request.url_for('about_page') }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'about' %} active{% endif %}"
+                {% if active_page == 'about' %}aria-current="page"{% endif %}
             >
                 {{ content.nav.about }}
             </a>
-            <span class="separator">|</span>
-            
+
+            <span class="separator" aria-hidden="true">|</span>
+
             <a
                 href="{{ request.url_for('projects_page') }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'projects' %} active{% endif %}"
+                {% if active_page == 'projects' %}aria-current="page"{% endif %}
             >
                 {{ content.nav.projects }}
             </a>
-            <span class="separator">|</span>
+
+            <span class="separator" aria-hidden="true">|</span>
 
             <a
                 href="{{ request.url_for('contact_page') }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'contact' %} active{% endif %}"
+                {% if active_page == 'contact' %}aria-current="page"{% endif %}
             >
                 {{ content.nav.contact }}
             </a>
-            <span class="separator">|</span>
-            
+        </nav>
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="menu-toggle"
+                aria-controls="main-navigation"
+                aria-expanded="false"
+            >
+                <i data-lucide="menu" aria-hidden="true"></i>
+                <span>Menu</span>
+            </button>
+
             <div class="lang-switcher">
                 {% if current_lang == 'pl' %}
                     <a
                         href="{{ request.url.include_query_params(lang='en') }}"
                         class="lang-icon"
-                        title="Switch to English">
-                        <span class="fi fi-gb"></span>
+                        title="Switch to English"
+                        aria-label="Switch to English"
+                    >
+                        <span class="fi fi-gb" aria-hidden="true"></span>
                     </a>
                 {% else %}
                     <a
                         href="{{ request.url.include_query_params(lang='pl') }}"
                         class="lang-icon"
-                        title="Przełącz na polski">
-                        <span class="fi fi-pl"></span>
+                        title="Przełącz na polski"
+                        aria-label="Przełącz na polski"
+                    >
+                        <span class="fi fi-pl" aria-hidden="true"></span>
                     </a>
                 {% endif %}
             </div>
-        </nav>
+
+        </div>
+
     </header>
 
-    <main class="main-content">
+    <main class="main-content {% block main_class %}{% endblock %}">
         {% block content %}
         {% endblock %}
     </main>

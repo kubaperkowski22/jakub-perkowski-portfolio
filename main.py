@@ -1,9 +1,10 @@
 import json
 from pathlib import Path
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -111,4 +112,58 @@ async def projects_page(request: Request, lang: str = DEFAULT_LANGUAGE):
             "target_lang": target_lang,
             "active_page": "projects",
         }
+    )
+
+@app.get("/projekty/{slug}", response_class=HTMLResponse, name="project_detail")
+async def project_detail(request: Request, slug: str, lang: str = DEFAULT_LANGUAGE):
+    lang = normalize_language(lang)
+    content = get_content(lang)
+    page = content["projects_page"]
+
+    project = next(
+        (
+            item
+            for item in page["projects"]
+            if item["slug"] == slug
+        ),
+        None,
+    )
+
+    if project is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Project not found",
+        )
+
+    section_order = (
+        "overview",
+        "problem",
+        "approach",
+        "technical_details",
+        "evaluation",
+        "results",
+        "lessons"
+    )
+
+    sections = [
+        {
+            "id": key,
+            "title": page["detail_labels"][key],
+            "text": project["details"].get(key),
+        }
+        for key in section_order
+        if project["details"].get(key)
+    ]
+
+    return templates.TemplateResponse(
+        request=request,
+        name="project_detail.html",
+        context={
+            "content": content,
+            "current_lang": lang,
+            "active_page": "projects",
+            "page": page,
+            "project": project,
+            "sections": sections,
+        },
     )

@@ -65,5 +65,198 @@
     "phone": "+48 507 706 414",
     "linkedin_url": "https://www.linkedin.com/in/jakub-perkowski-393a59244/",
     "linkedin_text": "LinkedIn"
+  },
+  "projects_page": {
+    "title": "Projects",
+    "subtitle": "Selected artificial intelligence, machine learning and software engineering projects.",
+
+    "labels": {
+      "featured": "Featured",
+      "view_details": "View details",
+      "github": "GitHub",
+      "technologies": "Technologies",
+      "highlights": "Highlights"
+    },
+
+    "status_labels": {
+      "in_development": "In development",
+      "completed": "Completed"
+    },
+
+    "type_labels": {
+      "portfolio_project": "Portfolio project",
+      "masters_thesis": "Master's thesis",
+      "engineering_thesis": "Engineering thesis",
+      "academic_nlp_project": "Academic NLP project"
+    },
+
+    "projects": [
+      {
+        "slug": "ai-portfolio-assistant",
+        "name": "AI Portfolio Assistant",
+        "type": "portfolio_project",
+        "status": "in_development",
+        "featured": true,
+
+        "summary": "An AI assistant being developed as part of my portfolio. Its goal is to answer questions about my experience, projects and technical skills using a controlled knowledge base.",
+
+        "technologies": [
+          "Python",
+          "FastAPI",
+          "Jinja2",
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+
+        "highlights": [
+          "FastAPI backend",
+          "Bilingual Polish/English interface",
+          "Public GitHub repository",
+          "Iterative development towards a RAG-based system"
+        ],
+
+        "github_url": "https://github.com/kubaperkowski22/jakub-perkowski-portfolio",
+        "live_url": null,
+
+        "details": {
+          "overview": "The project aims to transform a static portfolio into an interactive AI application where recruiters can ask questions about my professional experience, projects, education and technical skills.",
+          "problem": "Traditional portfolios require users to manually search through multiple sections of a website or a PDF resume. The goal is to make this information accessible through natural-language questions.",
+          "approach": "The system is being developed incrementally. The target architecture includes Retrieval-Augmented Generation, a separate knowledge base, vector search and LLM-based answer generation with source attribution.",
+          "technical_details": "At its current stage, the application uses FastAPI as the backend, Jinja2 for server-side templates and HTML, CSS and JavaScript in the browser. It also supports Polish and English and has been structured for further AI-related development.",
+          "evaluation": "RAG evaluation will be introduced after retrieval and generation are implemented. The plan is to create a manually curated evaluation dataset and measure retrieval quality, answer correctness and hallucination behavior.",
+          "results": "The project is currently under development. The web application foundation and code structure required for the future AI components have been completed.",
+          "lessons": "The project serves as a practical environment for learning how to design an AI application from architecture and backend development through data handling, evaluation, testing and deployment."
+        }
+      },
+
+      {
+        "slug": "survival-analysis",
+        "name": "Deep Neural Networks in Survival Analysis",
+        "type": "masters_thesis",
+        "status": "completed",
+        "featured": true,
+
+        "summary": "A research project focused on applying deep neural networks to survival analysis. I implemented DeepSurv and DeepHit and then developed modified variants with an additional module for analyzing the importance of input features.",
+
+        "technologies": [
+          "Python",
+          "PyTorch",
+          "PyCox",
+          "pandas",
+          "scikit-learn"
+        ],
+
+        "highlights": [
+          "4 evaluated neural-network architectures",
+          "7 oncology datasets",
+          "Approximately 20,000 to 700,000 records",
+          "10 training runs per model on each dataset",
+          "Evaluation using C-index and Integrated Brier Score"
+        ],
+
+        "github_url": "https://github.com/kubaperkowski22/DL_SurvivalAnalysis",
+        "live_url": null,
+
+        "details": {
+          "overview": "My master's thesis focused on the application of deep neural networks to survival analysis using oncology datasets.",
+          "problem": "One limitation of deep neural networks is their black-box nature. The project aimed to introduce a mechanism that makes it possible to inspect which input features were most important to the model and to determine whether this mechanism meaningfully affected predictive performance.",
+          "approach": "I first implemented DeepSurv and DeepHit. I then developed modified versions of both architectures containing an attention-based module for estimating the relative importance of input features.",
+          "technical_details": "Data preprocessing included handling missing values, categorical-variable encoding including one-hot encoding, standardization and splitting the data into training, validation and test sets. Experiments were conducted on seven oncology datasets.",
+          "evaluation": "Each of the four models was trained 10 times on every dataset. Performance was evaluated using the C-index and Integrated Brier Score, including analysis of average performance and variability between runs.",
+          "results": "The added module provided a way to inspect the relative importance of features and therefore reduced the black-box nature of the networks. Its impact on predictive metrics depended on the dataset: some experiments improved while others remained similar or became worse.",
+          "lessons": "The project gave me hands-on experience with deep learning, survival analysis, model interpretability, large-scale data preprocessing, experiment design and rigorous model comparison."
+        }
+      },
+
+      {
+        "slug": "diagnose-me",
+        "name": "DiagnoseMe",
+        "type": "engineering_thesis",
+        "status": "completed",
+        "featured": true,
+
+        "summary": "A desktop prototype for preliminary symptom assessment and recommendations for further action. It combined a structured symptom interview with LLM-generated responses through the OpenAI API.",
+
+        "technologies": [
+          "C#",
+          ".NET 8",
+          "WPF",
+          "OpenAI API",
+          "Entity Framework Core",
+          "Azure SQL"
+        ],
+
+        "highlights": [
+          "Structured symptom selection and follow-up questions",
+          "Dynamic prompt construction from user data",
+          "LLM API integration",
+          "Application data stored in Azure SQL",
+          "Explicit disclaimer that generated output does not replace medical consultation"
+        ],
+
+        "github_url": "https://github.com/kubaperkowski22/DiagnoseMe",
+        "live_url": null,
+
+        "details": {
+          "overview": "My engineering thesis was a desktop prototype designed to support users in preliminary symptom assessment and choosing further action.",
+          "problem": "The project explored how a language model could be integrated into a larger application where user input is first structured and enriched with additional context.",
+          "approach": "Users selected symptoms from a predefined list and answered additional questions associated with those symptoms. The collected information was then transformed into a structured prompt sent to the language-model API.",
+          "technical_details": "The application was developed in C# using WPF. Application data was stored in an Azure SQL database. Besides the AI-related diagnostic flow, the project also included additional features such as user management, stored history and appointments.",
+          "evaluation": "The project focused on application-level LLM integration and data flow rather than developing a proprietary medical model or performing clinical diagnostic validation.",
+          "results": "The result was a working prototype combining a desktop application, database persistence and an external LLM API. Generated output was accompanied by a disclaimer stating that it was not medical advice and did not replace consultation with a healthcare professional.",
+          "lessons": "The project gave me experience integrating an LLM API into a larger application, constructing prompts from structured user data and connecting application logic with persistent storage."
+        }
+      },
+
+      {
+        "slug": "news-extractor",
+        "name": "News Extractor",
+        "type": "academic_nlp_project",
+        "status": "completed",
+        "featured": false,
+
+        "summary": "An independently developed academic NLP project for classifying events in Polish text and extracting information about event participants and details.",
+
+        "technologies": [
+          "Python",
+          "scikit-learn",
+          "spaCy",
+          "TF-IDF"
+        ],
+
+        "highlights": [
+          "Comparison of SVM, Naive Bayes and Random Forest",
+          "Custom dataset prepared with Gemini assistance",
+          "302 test examples",
+          "Evaluation using confusion matrices",
+          "Naive Bayes achieved the fewest errors: 24 out of 302 examples"
+        ],
+
+        "github_url": "https://github.com/kubaperkowski22/News-extractor---NLP",
+        "live_url": null,
+
+        "details": {
+          "overview": "An independently developed project created for a Natural Language Processing university course. The system classified events described in text and attempted to extract information such as participants and event details.",
+          "problem": "The goal was to combine classical text classification with rule-based natural-language analysis and compare several common classification algorithms.",
+          "approach": "Text was represented using TF-IDF and classified using SVM, Naive Bayes or Random Forest. spaCy was then used for further Polish-language analysis including tokenization, lemmatization and dependency analysis.",
+          "technical_details": "The dataset was prepared independently with Gemini assistance. After event classification, the spaCy-based part analyzed sentence structure in order to extract information related to the event.",
+          "evaluation": "The models were compared on the same test set containing 302 examples. Evaluation included confusion matrices and the number of incorrectly classified examples.",
+          "results": "Naive Bayes misclassified 24 of 302 examples, SVM misclassified 29 and Random Forest misclassified 46. Naive Bayes therefore performed best on this particular dataset.",
+          "lessons": "The project gave me practical experience with classical NLP, TF-IDF representations, model comparison and spaCy. It also demonstrated the limitations of evaluating models on a relatively small, self-prepared dataset."
+        }
+      }
+    ],
+
+    "back_to_projects": "Back to projects",
+    "detail_labels": {
+      "overview": "Overview",
+      "problem": "Problem",
+      "approach": "Approach",
+      "technical_details": "Technical details",
+      "evaluation": "Evaluation",
+      "results": "Results",
+      "lessons": "What I learned"
+    }
   }
 }

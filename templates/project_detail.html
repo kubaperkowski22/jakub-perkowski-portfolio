@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ project.name }} - Jakub Perkowski
+{% endblock %}
+
+{% block main_class %}projects-layout{% endblock %}
+
+{% block content %}
+
+<article class="project-detail">
+
+    <a
+        href="{{ request.url_for('projects_page').include_query_params(lang=current_lang) }}"
+        class="project-detail__back"
+    >
+        <i data-lucide="arrow-left" aria-hidden="true"></i>
+        {{ page.back_to_projects }}
+    </a>
+
+    <header class="project-detail__header">
+
+        <div class="project-card__meta">
+            {% if project.featured %}
+                <span class="project-badge project-badge--featured">
+                    {{ page.labels.featured }}
+                </span>
+            {% endif %}
+
+            <span class="project-badge">
+                {{ page.status_labels[project.status] }}
+            </span>
+        </div>
+
+        <p class="project-card__type">
+            {{ page.type_labels[project.type] }}
+        </p>
+
+        <h1 class="project-detail__title">
+            {{ project.name }}
+        </h1>
+
+        <p class="project-detail__summary">
+            {{ project.summary }}
+        </p>
+
+        <div class="project-card__technologies">
+            {% for technology in project.technologies %}
+                <span class="technology-badge">
+                    {{ technology }}
+                </span>
+            {% endfor %}
+        </div>
+
+        <div class="project-detail__actions">
+            {% if project.github_url %}
+                <a
+                    href="{{ project.github_url }}"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        src="{{ request.url_for('static', path='img/GitHub_Invertocat_White.svg') }}"
+                        class="project-link__icon"
+                        alt=""
+                        aria-hidden="true"
+                    >
+                    {{ page.labels.github }}
+                </a>
+            {% endif %}
+        </div>
+
+    </header>
+
+    {% if project.highlights %}
+        <section class="project-detail__highlights">
+            <h2>{{ page.labels.highlights }}</h2>
+
+            <ul>
+                {% for highlight in project.highlights %}
+                    <li>{{ highlight }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    <div class="project-detail__sections">
+
+        {% for section in sections %}
+
+            <section
+                id="{{ section.id }}"
+                class="project-detail__section"
+            >
+                <h2>{{ section.title }}</h2>
+                <p>{{ section.text }}</p>
+            </section>
+
+        {% endfor %}
+
+    </div>
+
+</article>
+
+{% endblock %}
