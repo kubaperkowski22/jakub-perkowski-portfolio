@@ -30,7 +30,7 @@
     "projects": [
       {
         "name": "Głębokie sieci neuronowe w analizie przeżycia",
-        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Stworzenie autorskich modeli głębokich sieci neuronowych opartych na istniejących już modelach oraz porównanie ich skuteczności z klasycznymi metodami analizy przeżycia na 7 dużych zbiorach danych pacjentów onkologicznych (ponad 600 tyś. rekordów)."
+        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Stworzenie autorskich modeli głębokich sieci neuronowych opartych na istniejących już modelach oraz porównanie ich skuteczności z klasycznymi metodami analizy przeżycia na 7 dużych zbiorach danych pacjentów onkologicznych (ponad 740 tyś. rekordów)."
       },
       {
         "name": "DiagnoseMe",
@@ -150,7 +150,7 @@
         "highlights": [
           "4 analizowane architektury sieci neuronowych",
           "7 onkologicznych zbiorów danych",
-          "Od około 20 000 do 700 000 rekordów",
+          "Od około 21 000 do 741 000 rekordów",
           "10 treningów każdego modelu na każdym zbiorze",
           "Ewaluacja z użyciem C-index oraz Integrated Brier Score"
         ],

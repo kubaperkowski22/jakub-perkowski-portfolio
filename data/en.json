@@ -30,7 +30,7 @@
     "projects": [
       {
         "name": "Deep Neural Networks in Survival Analysis",
-        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Developing custom deep neural network models based on existing models and comparing their effectiveness with classical survival analysis methods on 7 large datasets of oncology patients (over 600,000 records)."
+        "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Developing custom deep neural network models based on existing models and comparing their effectiveness with classical survival analysis methods on 7 large datasets of oncology patients (over 741,000 records)."
       },
       {
         "name": "DiagnoseMe",
@@ -150,7 +150,7 @@
         "highlights": [
           "4 evaluated neural-network architectures",
           "7 oncology datasets",
-          "Approximately 20,000 to 700,000 records",
+          "Approximately 21,000 to 741,000 records",
           "10 training runs per model on each dataset",
           "Evaluation using C-index and Integrated Brier Score"
         ],
