@@ -1,0 +1,127 @@
+[
+  {
+    "id": "pl-survival-datasets",
+    "language": "pl",
+    "question": "Na ilu zbiorach danych porównano modele w pracy magisterskiej?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "siedem zbiorów danych onkologicznych"
+    ]
+  },
+  {
+    "id": "pl-diagnose-tech",
+    "language": "pl",
+    "question": "Jakich technologii użyto w DiagnoseMe?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "C#",
+      ".NET",
+      "WPF",
+      "MVVM",
+      "Entity Framework Core",
+      "Azure SQL",
+      "OpenAI API"
+    ]
+  },
+  {
+    "id": "pl-news-result",
+    "language": "pl",
+    "question": "Który model popełnił najmniej błędów w News Extractor?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "Naive Bayes",
+      "24"
+    ]
+  },
+  {
+    "id": "pl-ai-status",
+    "language": "pl",
+    "question": "Czy AI Portfolio Assistant ma już zaimplementowany RAG?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "RAG nie jest jeszcze przedstawiany jako ukończona funkcjonalność"
+    ]
+  },
+  {
+    "id": "pl-attention",
+    "language": "pl",
+    "question": "Jak tworzono rankingi wag attention w pracy magisterskiej?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "wagi ze zbioru testowego",
+      "uśrednianie po pacjentach",
+      "dziesięć treningów",
+      "uśrednianie między uruchomieniami"
+    ]
+  },
+  {
+    "id": "pl-unknown-certificates",
+    "language": "pl",
+    "question": "Jakie certyfikaty AWS posiada Jakub?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "en-llm-api",
+    "language": "en",
+    "question": "What experience does Jakub have with LLMs and APIs?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "OpenAI API",
+      "DiagnoseMe",
+      "AI Portfolio Assistant"
+    ]
+  },
+  {
+    "id": "en-survival-results",
+    "language": "en",
+    "question": "Did attention models always outperform the baseline models?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "no",
+      "results depended on the dataset"
+    ]
+  },
+  {
+    "id": "en-unknown-kubernetes",
+    "language": "en",
+    "question": "How much professional experience does Jakub have with Kubernetes?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "pl-unknown-aws",
+    "language": "pl",
+    "question": "Ile lat Jakub pracował zawodowo z AWS?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "pl-unknown-java",
+    "language": "pl",
+    "question": "Jakie projekty komercyjne Jakub stworzył w Javie?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "pl-unknown-kubernetes",
+    "language": "pl",
+    "question": "Jakie doświadczenie Jakub ma z Kubernetes?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "en-unknown-aws-cert",
+    "language": "en",
+    "question": "Which AWS certifications does Jakub hold?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  },
+  {
+    "id": "en-unknown-java",
+    "language": "en",
+    "question": "What commercial Java projects has Jakub worked on?",
+    "expected_behavior": "abstain",
+    "expected_facts": []
+  }
+]

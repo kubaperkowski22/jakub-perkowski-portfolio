@@ -1,0 +1,115 @@
+[
+  {
+    "id": "pl-survival-datasets",
+    "language": "pl",
+    "question": "Na ilu zbiorach danych porównano modele w pracy magisterskiej?",
+    "expected_document_ids": [
+      "project.survival-analysis"
+    ],
+    "expected_sections": [
+      "Metodologia eksperymentów"
+    ]
+  },
+  {
+    "id": "pl-survival-attention-ranking",
+    "language": "pl",
+    "question": "Jak tworzono rankingi wag attention?",
+    "expected_document_ids": [
+      "project.survival-analysis"
+    ],
+    "expected_sections": [
+      "Interpretowalność i analiza wag attention"
+    ]
+  },
+  {
+    "id": "pl-survival-results",
+    "language": "pl",
+    "question": "Czy modele z attention zawsze osiągały lepsze wyniki?",
+    "expected_document_ids": [
+      "project.survival-analysis"
+    ]
+  },
+  {
+    "id": "pl-diagnose-tech",
+    "language": "pl",
+    "question": "Jakich technologii użyto w DiagnoseMe?",
+    "expected_document_ids": [
+      "project.diagnose-me"
+    ],
+    "expected_sections": [
+      "Architektura i technologie"
+    ]
+  },
+  {
+    "id": "pl-diagnose-llm",
+    "language": "pl",
+    "question": "Jak DiagnoseMe wykorzystywał model językowy?",
+    "expected_document_ids": [
+      "project.diagnose-me"
+    ],
+    "expected_sections": [
+      "Integracja z modelem językowym"
+    ]
+  },
+  {
+    "id": "pl-news-results",
+    "language": "pl",
+    "question": "Który model popełnił najmniej błędów w News Extractor?",
+    "expected_document_ids": [
+      "project.news-extractor"
+    ]
+  },
+  {
+    "id": "pl-ai-status",
+    "language": "pl",
+    "question": "Czy AI Portfolio Assistant ma już zaimplementowany RAG?",
+    "expected_document_ids": [
+      "project.ai-portfolio-assistant"
+    ],
+    "expected_sections": [
+      "Aktualny stan implementacji"
+    ]
+  },
+  {
+    "id": "pl-experience",
+    "language": "pl",
+    "question": "Czym Jakub zajmował się w PLUM?",
+    "expected_document_ids": [
+      "profile.experience"
+    ]
+  },
+  {
+    "id": "en-llm-api",
+    "language": "en",
+    "question": "What experience does Jakub have with LLMs and APIs?",
+    "expected_document_ids": [
+      "profile.skills",
+      "project.diagnose-me",
+      "project.ai-portfolio-assistant"
+    ]
+  },
+  {
+    "id": "en-diagnose-tech",
+    "language": "en",
+    "question": "What technologies were used in DiagnoseMe?",
+    "expected_document_ids": [
+      "project.diagnose-me"
+    ]
+  },
+  {
+    "id": "en-survival-methodology",
+    "language": "en",
+    "question": "How many datasets were used in the master's thesis experiments?",
+    "expected_document_ids": [
+      "project.survival-analysis"
+    ]
+  },
+  {
+    "id": "en-professional-experience",
+    "language": "en",
+    "question": "What did Jakub work on at PLUM?",
+    "expected_document_ids": [
+      "profile.experience"
+    ]
+  }
+]
