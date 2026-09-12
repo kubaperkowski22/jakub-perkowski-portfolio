@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from pgvector.psycopg import register_vector
 from sqlalchemy import create_engine, event
 from sqlalchemy.engine import Engine
+from functools import lru_cache
 
 
 load_dotenv()
@@ -20,6 +21,7 @@ def get_database_url() -> str:
     return database_url
 
 
+@lru_cache(maxsize=1)
 def create_database_engine() -> Engine:
     engine = create_engine(
         get_database_url(),

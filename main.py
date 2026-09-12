@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
+
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from api.chat import router as chat_router
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -18,6 +20,7 @@ DEFAULT_LANGUAGE = "pl"
 
 
 app = FastAPI(title="CV online", description="Moje CV w formie online", version="1.0.0")
+app.include_router(chat_router)
 
 app.mount(
     "/static",
@@ -167,3 +170,56 @@ async def project_detail(request: Request, slug: str, lang: str = DEFAULT_LANGUA
             "sections": sections,
         },
     )
+
+
+@app.get("/chat", response_class=HTMLResponse, name="chat")
+def chat_page(request: Request, lang: str = DEFAULT_LANGUAGE,):
+    lang = normalize_language(lang)
+    content = get_content(lang)
+    
+    return templates.TemplateResponse(
+        request=request,
+        name="chat.html",
+        context={
+            "content": content,
+            "current_lang": lang,
+            "active_page": "chat",
+        },
+    )
+
+@app.middleware("http")
+async def add_security_headers(
+    request: Request,
+    call_next,
+):
+    response = await call_next(
+        request
+    )
+
+    response.headers[
+        "X-Content-Type-Options"
+    ] = "nosniff"
+
+    response.headers[
+        "X-Frame-Options"
+    ] = "DENY"
+
+    response.headers[
+        "Referrer-Policy"
+    ] = "strict-origin-when-cross-origin"
+
+    response.headers[
+        "Permissions-Policy"
+    ] = (
+        "camera=(), microphone=(), "
+        "geolocation=()"
+    )
+
+    if request.url.path.startswith(
+        "/api/chat"
+    ):
+        response.headers[
+            "Cache-Control"
+        ] = "no-cache, no-store"
+
+    return response

@@ -721,3 +721,82 @@ details[open].info-group summary::before {
     display: block;
     flex-shrink: 0;
 }
+
+
+/* CHAT */
+.chat-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.chat-header {
+    margin-bottom: 1.5rem;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat-messages {
+    min-height: 420px;
+    max-height: 65vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 12px;
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    white-space: pre-wrap;
+}
+
+.chat-message-user {
+    align-self: flex-end;
+}
+
+.chat-message-assistant {
+    align-self: flex-start;
+}
+
+.chat-message-error {
+    font-weight: 600;
+}
+
+.chat-form {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.chat-form textarea {
+    flex: 1;
+    resize: vertical;
+}
+
+.chat-sources {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.chat-sources ul {
+    margin-bottom: 0;
+}
+
+.chat-citation {
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.chat-citation:hover,
+.chat-citation:focus {
+    text-decoration: underline;
+}

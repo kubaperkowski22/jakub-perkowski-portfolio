@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+    {% block title %}
+        {% if current_lang == "pl" %}
+            AI Assistant | Jakub Perkowski
+        {% else %}
+            AI Assistant | Jakub Perkowski
+        {% endif %}
+    {% endblock %}
+
+    {% block content %}
+    <section class="chat-page">
+        <div class="chat-header">
+            <h1>
+                {% if current_lang == "pl" %}
+                    Zapytaj AI o Jakuba
+                {% else %}
+                    Ask AI about Jakub
+                {% endif %}
+            </h1>
+
+            <p>
+                {% if current_lang == "pl" %}
+                    Asystent odpowiada wyłącznie na podstawie
+                    publicznych informacji o doświadczeniu,
+                    projektach i umiejętnościach Jakuba.
+                {% else %}
+                    The assistant answers only from public
+                    information about Jakub's experience,
+                    projects, and skills.
+                {% endif %}
+            </p>
+        </div>
+
+        <div
+            id="chat-app"
+            class="chat-container"
+            data-language="{{ current_lang }}"
+        >
+            <div
+                id="chat-messages"
+                class="chat-messages"
+                aria-live="polite"
+            >
+                <div class="chat-message chat-message-assistant">
+                    {% if current_lang == "pl" %}
+                        Cześć! Możesz zapytać mnie o doświadczenie,
+                        projekty lub umiejętności Jakuba.
+                    {% else %}
+                        Hi! You can ask me about Jakub's experience,
+                        projects, or skills.
+                    {% endif %}
+                </div>
+            </div>
+
+            <form id="chat-form" class="chat-form">
+                <label for="chat-input" class="sr-only">
+                    {% if current_lang == "pl" %}
+                        Twoje pytanie
+                    {% else %}
+                        Your question
+                    {% endif %}
+                </label>
+
+                <textarea
+                    id="chat-input"
+                    name="message"
+                    maxlength="2000"
+                    rows="3"
+                    required
+                    placeholder="{% if current_lang == 'pl' %}Np. Jakich technologii użyto w DiagnoseMe?{% else %}E.g. What technologies were used in DiagnoseMe?{% endif %}"
+                ></textarea>
+
+                <button
+                    id="chat-submit"
+                    type="submit"
+                >
+                    {% if current_lang == "pl" %}
+                        Wyślij
+                    {% else %}
+                        Send
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block scripts %}
+        <script
+            src="{{ url_for('static', path='js/chat.js') }}"
+            defer
+        ></script>
+    {% endblock %}

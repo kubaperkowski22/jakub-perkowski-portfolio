@@ -2,7 +2,7 @@ import pytest
 
 from rag.llm import GeneratedAnswer
 from rag.retrieval import RetrievalResult
-from rag.service import answer_question
+from rag.service import answer_question, ConversationMessage
 
 
 class FakeLLMProvider:
@@ -166,6 +166,158 @@ def test_answer_question_rejects_invalid_citation(
     ):
         answer_question(
             query="Pytanie",
+            language="pl",
+            embedding_provider=object(),
+            llm_provider=llm_provider,
+        )
+
+
+def test_answer_question_uses_user_history_for_retrieval(
+    monkeypatch,
+):
+    captured_query = {}
+
+    results = [
+        make_result(
+            result_id="project.test:pl:0",
+            document_id="project.test",
+            section="Technologie",
+            distance=0.2,
+        ),
+    ]
+
+    def fake_search_chunks(**kwargs):
+        captured_query["value"] = kwargs["query"]
+        return results
+
+    monkeypatch.setattr(
+        "rag.service.search_chunks",
+        fake_search_chunks,
+    )
+
+    llm_provider = FakeLLMProvider(
+        GeneratedAnswer(
+            answerable=True,
+            answer="Odpowiedź. [1]",
+            citations=[1],
+        )
+    )
+
+    history = [
+        ConversationMessage(
+            role="user",
+            content=(
+                "Jakich technologii użyto "
+                "w DiagnoseMe?"
+            ),
+        ),
+        ConversationMessage(
+            role="assistant",
+            content="C#, WPF i Azure SQL.",
+        ),
+    ]
+
+    answer_question(
+        query=(
+            "Które z nich były związane "
+            "z bazą danych?"
+        ),
+        language="pl",
+        embedding_provider=object(),
+        llm_provider=llm_provider,
+        history=history,
+    )
+
+    assert (
+        "Jakich technologii użyto w DiagnoseMe?"
+        in captured_query["value"]
+    )
+
+    assert (
+        "Które z nich były związane z bazą danych?"
+        in captured_query["value"]
+    )
+
+    assert (
+        "C#, WPF i Azure SQL."
+        not in captured_query["value"]
+    )
+
+
+def test_answer_question_rejects_citation_mismatch(
+    monkeypatch,
+):
+    results = [
+        make_result(
+            result_id="project.test:pl:0",
+            document_id="project.test",
+            section="Pierwsza",
+            distance=0.2,
+        ),
+        make_result(
+            result_id="project.test:pl:1",
+            document_id="project.test",
+            section="Druga",
+            distance=0.3,
+        ),
+    ]
+
+    monkeypatch.setattr(
+        "rag.service.search_chunks",
+        lambda **kwargs: results,
+    )
+
+    llm_provider = FakeLLMProvider(
+        GeneratedAnswer(
+            answerable=True,
+            answer="Odpowiedź. [1]",
+            citations=[2],
+        )
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="Inline citations",
+    ):
+        answer_question(
+            query="Test",
+            language="pl",
+            embedding_provider=object(),
+            llm_provider=llm_provider,
+        )
+
+
+def test_answer_question_requires_citation_for_answer(
+    monkeypatch,
+):
+    results = [
+        make_result(
+            result_id="project.test:pl:0",
+            document_id="project.test",
+            section="Sekcja",
+            distance=0.2,
+        )
+    ]
+
+    monkeypatch.setattr(
+        "rag.service.search_chunks",
+        lambda **kwargs: results,
+    )
+
+    llm_provider = FakeLLMProvider(
+        GeneratedAnswer(
+            answerable=True,
+            answer="Odpowiedź bez źródła.",
+            citations=[],
+        )
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="at least one citation",
+    ):
+        answer_question(
+            query="Test",
             language="pl",
             embedding_provider=object(),
             llm_provider=llm_provider,
