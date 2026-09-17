@@ -172,7 +172,7 @@ async def project_detail(request: Request, slug: str, lang: str = DEFAULT_LANGUA
     )
 
 
-@app.get("/chat", response_class=HTMLResponse, name="chat")
+@app.get("/chat", response_class=HTMLResponse, name="chat_page")
 def chat_page(request: Request, lang: str = DEFAULT_LANGUAGE,):
     lang = normalize_language(lang)
     content = get_content(lang)

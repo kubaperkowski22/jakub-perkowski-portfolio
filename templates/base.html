@@ -29,6 +29,19 @@
             aria-label="{% if current_lang == 'pl' %}Nawigacja główna{% else %}Main navigation{% endif %}"
         >
             <a
+                href="{{ request.url_for('chat_page') }}?lang={{ current_lang }}"
+                class="nav-ai-link {% if active_page == 'chat' %}active{% endif %}"
+            >
+                <span class="nav-ai-icon" aria-hidden="true">✦</span>
+
+                {% if current_lang == "pl" %}
+                    Zapytaj moje AI
+                {% else %}
+                    Ask my AI
+                {% endif %}
+            </a>
+
+            <a
                 href="{{ request.url_for('about_page') }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'about' %} active{% endif %}"
                 {% if active_page == 'about' %}aria-current="page"{% endif %}

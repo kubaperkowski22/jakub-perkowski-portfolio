@@ -1,60 +1,131 @@
 {% extends "base.html" %}
 
-    {% block title %}
-        {% if current_lang == "pl" %}
-            AI Assistant | Jakub Perkowski
-        {% else %}
-            AI Assistant | Jakub Perkowski
-        {% endif %}
-    {% endblock %}
+{% block title %}
+    {% if current_lang == "pl" %}
+        AI Assistant | Jakub Perkowski
+    {% else %}
+        AI Assistant | Jakub Perkowski
+    {% endif %}
+{% endblock %}
 
-    {% block content %}
-    <section class="chat-page">
-        <div class="chat-header">
-            <h1>
-                {% if current_lang == "pl" %}
-                    Zapytaj AI o Jakuba
-                {% else %}
-                    Ask AI about Jakub
-                {% endif %}
-            </h1>
+{% block content %}
+<section class="chat-page">
 
-            <p>
-                {% if current_lang == "pl" %}
-                    Asystent odpowiada wyłącznie na podstawie
-                    publicznych informacji o doświadczeniu,
-                    projektach i umiejętnościach Jakuba.
-                {% else %}
-                    The assistant answers only from public
-                    information about Jakub's experience,
-                    projects, and skills.
-                {% endif %}
-            </p>
+    <header class="chat-hero">
+        <div class="chat-hero-badge">
+            <span aria-hidden="true">✦</span>
+            AI Portfolio Assistant
         </div>
 
-        <div
-            id="chat-app"
-            class="chat-container"
-            data-language="{{ current_lang }}"
+        <h1>
+            {% if current_lang == "pl" %}
+                Zapytaj AI o Jakuba
+            {% else %}
+                Ask AI about Jakub
+            {% endif %}
+        </h1>
+
+        <p class="chat-hero-description">
+            {% if current_lang == "pl" %}
+                Zapytaj o doświadczenie, projekty, technologie
+                lub pracę magisterską. Odpowiedzi są generowane
+                na podstawie publicznych źródeł portfolio.
+            {% else %}
+                Ask about experience, projects, technologies,
+                or Jakub's master's thesis. Answers are grounded
+                in public portfolio sources.
+            {% endif %}
+        </p>
+    </header>
+
+    <div
+        id="chat-app"
+        class="chat-app"
+        data-language="{{ current_lang }}"
+    >
+        <section
+            class="chat-panel"
+            aria-label="{% if current_lang == 'pl' %}Rozmowa z AI{% else %}AI conversation{% endif %}"
         >
             <div
                 id="chat-messages"
                 class="chat-messages"
                 aria-live="polite"
             >
-                <div class="chat-message chat-message-assistant">
-                    {% if current_lang == "pl" %}
-                        Cześć! Możesz zapytać mnie o doświadczenie,
-                        projekty lub umiejętności Jakuba.
-                    {% else %}
-                        Hi! You can ask me about Jakub's experience,
-                        projects, or skills.
-                    {% endif %}
+                <div class="chat-row chat-row-assistant">
+                    <div class="chat-avatar" aria-hidden="true">
+                        AI
+                    </div>
+
+                    <div class="chat-message chat-message-assistant">
+                        {% if current_lang == "pl" %}
+Cześć! Mogę odpowiedzieć na pytania dotyczące doświadczenia, projektów i umiejętności Jakuba.
+                        {% else %}
+Hi! I can answer questions about Jakub's experience, projects, and skills.
+                        {% endif %}
+                    </div>
                 </div>
             </div>
 
-            <form id="chat-form" class="chat-form">
-                <label for="chat-input" class="sr-only">
+            <div class="chat-suggestions">
+                <p class="chat-suggestions-label">
+                    {% if current_lang == "pl" %}
+                        Przykładowe pytania
+                    {% else %}
+                        Example questions
+                    {% endif %}
+                </p>
+
+                <div class="chat-suggestion-list">
+                    <button
+                        type="button"
+                        class="chat-suggestion"
+                        data-question-pl="Jakie doświadczenie Jakub ma z LLM i API?"
+                        data-question-en="What experience does Jakub have with LLMs and APIs?"
+                    >
+                        {% if current_lang == "pl" %}
+                            LLM i API
+                        {% else %}
+                            LLMs and APIs
+                        {% endif %}
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chat-suggestion"
+                        data-question-pl="Jakie doświadczenie zawodowe ma Jakub?"
+                        data-question-en="What professional experience does Jakub have?"
+                    >
+                        {% if current_lang == "pl" %}
+                            Doświadczenie
+                        {% else %}
+                            Experience
+                        {% endif %}
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chat-suggestion"
+                        data-question-pl="Na czym polegała praca magisterska Jakuba?"
+                        data-question-en="What was Jakub's master's thesis about?"
+                    >
+                        {% if current_lang == "pl" %}
+                            Praca magisterska
+                        {% else %}
+                            Master's thesis
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+
+            <form
+                id="chat-form"
+                class="chat-form"
+            >
+                <label
+                    for="chat-input"
+                    class="sr-only"
+                >
                     {% if current_lang == "pl" %}
                         Twoje pytanie
                     {% else %}
@@ -62,33 +133,53 @@
                     {% endif %}
                 </label>
 
-                <textarea
-                    id="chat-input"
-                    name="message"
-                    maxlength="2000"
-                    rows="3"
-                    required
-                    placeholder="{% if current_lang == 'pl' %}Np. Jakich technologii użyto w DiagnoseMe?{% else %}E.g. What technologies were used in DiagnoseMe?{% endif %}"
-                ></textarea>
+                <div class="chat-input-wrapper">
+                    <textarea
+                        id="chat-input"
+                        name="message"
+                        rows="1"
+                        maxlength="2000"
+                        required
+                        placeholder="{% if current_lang == 'pl' %}Zapytaj o doświadczenie, projekt lub technologię...{% else %}Ask about experience, a project, or technology...{% endif %}"
+                    ></textarea>
 
-                <button
-                    id="chat-submit"
-                    type="submit"
-                >
+                    <button
+                        id="chat-submit"
+                        class="chat-submit"
+                        type="submit"
+                        aria-label="{% if current_lang == 'pl' %}Wyślij wiadomość{% else %}Send message{% endif %}"
+                    >
+                        <span>
+                            {% if current_lang == "pl" %}
+                                Wyślij
+                            {% else %}
+                                Send
+                            {% endif %}
+                        </span>
+
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+
+                <p class="chat-disclaimer">
                     {% if current_lang == "pl" %}
-                        Wyślij
+                        AI może popełniać błędy. Odpowiedzi są ograniczone
+                        do publicznych informacji zawartych w portfolio.
                     {% else %}
-                        Send
+                        AI may make mistakes. Answers are limited to
+                        public information available in the portfolio.
                     {% endif %}
-                </button>
+                </p>
             </form>
-        </div>
-    </section>
-    {% endblock %}
+        </section>
+    </div>
 
-    {% block scripts %}
-        <script
-            src="{{ url_for('static', path='js/chat.js') }}"
-            defer
-        ></script>
-    {% endblock %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script
+    src="{{ url_for('static', path='js/chat.js') }}"
+    defer
+></script>
+{% endblock %}

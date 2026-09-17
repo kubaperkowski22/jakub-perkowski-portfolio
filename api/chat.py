@@ -139,6 +139,7 @@ class ChatResponse(BaseModel):
     dependencies=[
         Depends(enforce_chat_rate_limit),
     ],
+    name="chat_api",
 )
 def chat(
     request: ChatRequest,
@@ -224,6 +225,7 @@ def format_sse(
         dependencies=[
             Depends(enforce_chat_rate_limit),
         ],
+        name="chat_stream",
 )
 def chat_stream(
     request: ChatRequest,

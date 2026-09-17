@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("chat-input");
     const submitButton = document.getElementById("chat-submit");
     const messages = document.getElementById("chat-messages");
+    const suggestionButtons = document.querySelectorAll(".chat-suggestion");
+    const suggestions = document.querySelector(".chat-suggestions");
 
     if (!app || !form || !input || !submitButton || !messages) {
         return;
@@ -14,6 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const conversationHistory = [];
     const maxHistoryMessages = 4;
 
+    for (const button of suggestionButtons) {
+        button.addEventListener(
+            "click",
+            () => {
+                const question =
+                    language === "pl"
+                        ? button.dataset.questionPl
+                        : button.dataset.questionEn;
+
+                if (!question) {
+                    return;
+                }
+
+                input.value = question;
+                resizeInput();
+                input.focus();
+            }
+        );
+    }
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -23,17 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        hideSuggestions();
         addMessage("user", message);
 
         input.value = "";
+        resizeInput();
         setLoading(true);
 
-        const loadingMessage = addMessage(
-            "assistant",
-            language === "pl"
-                ? "Szukam informacji..."
-                : "Searching for information..."
-        );
+        const loadingMessage = addLoadingMessage();
 
         try {
             const response = await fetch(
@@ -113,26 +132,63 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addMessage(role, text, isError = false) {
-        const element = document.createElement("div");
+        const row = document.createElement("div");
 
-        element.classList.add(
+        row.classList.add(
+            "chat-row",
+            `chat-row-${role}`
+        );
+
+        if (role === "assistant") {
+            const avatar = document.createElement("div");
+
+            avatar.classList.add("chat-avatar");
+            avatar.textContent = "AI";
+            avatar.setAttribute("aria-hidden", "true");
+
+            row.appendChild(avatar);
+        }
+
+        const message = document.createElement("div");
+
+        message.classList.add(
             "chat-message",
             `chat-message-${role}`
         );
 
         if (isError) {
-            element.classList.add("chat-message-error");
+            message.classList.add(
+                "chat-message-error"
+            );
         }
 
-        element.textContent = text;
+        message.textContent = text;
 
-        messages.appendChild(element);
+        row.appendChild(message);
+        messages.appendChild(row);
+
         scrollToBottom();
 
-        return element;
+        return row;
     }
 
     function addAssistantResponse(data) {
+        const row = document.createElement("div");
+
+        row.classList.add(
+            "chat-row",
+            "chat-row-assistant"
+        );
+
+        const avatar = document.createElement("div");
+
+        avatar.classList.add("chat-avatar");
+        avatar.textContent = "AI";
+        avatar.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
         const wrapper = document.createElement("div");
 
         wrapper.classList.add(
@@ -141,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         const answer = document.createElement("div");
+
         answer.classList.add("chat-answer");
 
         appendAnswerWithCitations(
@@ -157,22 +214,29 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
 
-        messages.appendChild(wrapper);
+        row.appendChild(avatar);
+        row.appendChild(wrapper);
+
+        messages.appendChild(row);
+
         scrollToBottom();
     }
 
     function createSources(sources) {
-        const container = document.createElement("div");
+        const container = document.createElement("details");
         container.classList.add("chat-sources");
 
         const title = document.createElement("strong");
+        const summary = document.createElement("summary");
+
+        summary.textContent = language === "pl" ? `Źródła (${sources.length})` : `Sources (${sources.length})`;
 
         title.textContent =
             language === "pl"
                 ? "Źródła:"
                 : "Sources:";
 
-        container.appendChild(title);
+        container.appendChild(summary);
 
         const list = document.createElement("ul");
 
@@ -464,5 +528,93 @@ document.addEventListener("DOMContentLoaded", () => {
                 dataLines.join("\n")
             ),
         };
+    }
+
+    function resizeInput() {
+        input.style.height = "auto";
+
+        input.style.height = `${Math.min(
+            input.scrollHeight,
+            160
+        )}px`;
+    }
+
+    input.addEventListener(
+        "input",
+        resizeInput
+    );
+
+    function hideSuggestions() {
+        if (!suggestions) {
+            return;
+        }
+
+        suggestions.hidden = true;
+    }
+
+    function addLoadingMessage() {
+        const row = document.createElement("div");
+
+        row.classList.add(
+            "chat-row",
+            "chat-row-assistant"
+        );
+
+        const avatar =
+            document.createElement("div");
+
+        avatar.classList.add(
+            "chat-avatar"
+        );
+
+        avatar.textContent = "AI";
+        avatar.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        const bubble =
+            document.createElement("div");
+
+        bubble.classList.add(
+            "chat-message",
+            "chat-message-assistant"
+        );
+
+        const loading =
+            document.createElement("div");
+
+        loading.classList.add(
+            "chat-loading"
+        );
+
+        loading.setAttribute(
+            "aria-label",
+            language === "pl"
+                ? "AI przygotowuje odpowiedź"
+                : "AI is preparing an answer"
+        );
+
+        for (let i = 0; i < 3; i += 1) {
+            const dot =
+                document.createElement("span");
+
+            dot.classList.add(
+                "chat-loading-dot"
+            );
+
+            loading.appendChild(dot);
+        }
+
+        bubble.appendChild(loading);
+
+        row.appendChild(avatar);
+        row.appendChild(bubble);
+
+        messages.appendChild(row);
+
+        scrollToBottom();
+
+        return row;
     }
 });
