@@ -12,84 +12,185 @@ visibility: public
 
 ## Kontekst i cel projektu
 
-AI Portfolio Assistant to rozwijany przeze mnie projekt flagowy, którego celem jest przekształcenie portfolio i CV online w interaktywną aplikację AI. Asystent ma umożliwiać rekruterom i osobom technicznym zadawanie pytań o moje doświadczenie zawodowe, wykształcenie, projekty i umiejętności.
+AI Portfolio Assistant to chatbot osadzony w portfolio Jakuba, którego zadaniem jest odpowiadanie na pytania dotyczące jego doświadczenia zawodowego, projektów, wykształcenia i umiejętności.
 
-Projekt powstaje jako praktyczne środowisko do nauki i zastosowania AI engineeringu. Chcę samodzielnie przejść przez projektowanie architektury, przygotowanie danych, integrację modelu językowego, retrieval, ewaluację, testy i wdrożenie. Poszczególne technologie będę dodawał wtedy, gdy będą potrzebne do rozwiązania konkretnego problemu.
+Projekt powstał jako praktyczne rozwinięcie kompetencji związanych z budową aplikacji wykorzystujących modele językowe. Głównym celem było stworzenie systemu RAG działającego na kontrolowanym zbiorze publicznych informacji, z naciskiem na poprawność odpowiedzi, cytowanie źródeł, ograniczanie halucynacji, bezpieczeństwo oraz możliwość ewaluacji działania systemu.
 
-## Problem i użytkownicy
+Asystent mówi o Jakubie w trzeciej osobie i nie podszywa się pod niego.
 
-Klasyczne portfolio wymaga samodzielnego przeglądania sekcji strony i dokumentu PDF. Celem asystenta jest ułatwienie dotarcia do konkretnych informacji za pomocą pytań w języku naturalnym, np. o moje doświadczenie z deep learningiem, szczegóły pracy magisterskiej lub technologie wykorzystane w projektach.
+## Architektura aplikacji
 
-Głównymi użytkownikami są rekruterzy oraz osoby oceniające moje kompetencje techniczne. Asystent ma pomagać w poznaniu mojego profilu zawodowego, ale nie ma udawać, że jest mną, ani podejmować decyzji rekrutacyjnych.
+Backend aplikacji został zbudowany w Pythonie z wykorzystaniem FastAPI. Warstwa frontendowa wykorzystuje Jinja2, HTML, CSS i JavaScript bez dodatkowego frameworka frontendowego.
 
-## Aktualny stan implementacji
+Wiedza wykorzystywana przez chatbota jest utrzymywana w dwujęzycznej bazie wiedzy w plikach Markdown. Dokumenty są traktowane jako źródło prawdy, natomiast PostgreSQL z rozszerzeniem pgvector pełni rolę odtwarzalnego indeksu wyszukiwania.
 
-Na obecnym etapie działa lokalna aplikacja portfolio z backendem Python i FastAPI. Frontend wykorzystuje HTML, CSS, Jinja2 i JavaScript. Strona obsługuje język polski i angielski, zawiera sekcje „O mnie”, „Projekty” i „Kontakt” oraz umożliwia pobranie CV w formacie PDF.
+Proces RAG składa się z dwóch głównych części:
 
-Zaimplementowałem wspólny layout Jinja2, routing podstron, responsywną nawigację oraz osobne pliki JavaScript dla zachowań wspólnych i specyficznych dla podstron. Strona Projects jest generowana z uporządkowanych danych JSON. Każdy projekt posiada własny adres oparty na stabilnym slug-u oraz sekcje szczegółowe, do których można odsyłać za pomocą kotwic URL.
+1. procesu offline:
+   - wczytanie i walidacja dokumentów,
+   - podział dokumentów na fragmenty na podstawie struktury Markdown,
+   - wygenerowanie embeddings,
+   - zapis fragmentów i wektorów do PostgreSQL z pgvector;
 
-Kod portfolio znajduje się w publicznym repozytorium GitHub. Projekt ma opis zależności Pythona, plik `.gitignore`, przykładową konfigurację środowiskową i dokumentację uruchomienia. Przygotowywana jest również osobna, dwujęzyczna baza wiedzy w formacie Markdown.
+2. procesu online:
+   - przygotowanie zapytania użytkownika,
+   - wygenerowanie embeddingu zapytania,
+   - semantyczne wyszukiwanie najbardziej pasujących fragmentów,
+   - przekazanie odzyskanego kontekstu do modelu językowego,
+   - wygenerowanie odpowiedzi opartej na źródłach,
+   - walidacja cytowań i zwrócenie odpowiedzi wraz ze źródłami.
 
-Część konwersacyjna AI, embeddings, wyszukiwanie wektorowe, testy automatyczne i deployment nie są jeszcze ukończone. Nie przedstawiam ich jako gotowych funkcjonalności.
+## Retrieval i embeddings
 
-## Planowana architektura AI
+Do wyszukiwania semantycznego wykorzystywane są embeddings oraz PostgreSQL z rozszerzeniem pgvector.
 
-Docelowy przepływ zapytania ma wyglądać następująco:
+Tekst wykorzystywany do generowania embeddingu fragmentu zawiera tytuł dokumentu, nazwę sekcji, opcjonalną podsekcję oraz treść fragmentu. Oryginalna treść pozostaje zachowana oddzielnie i jest wykorzystywana jako materiał źródłowy do generowania odpowiedzi i cytowania.
 
-1. Użytkownik wpisuje pytanie na dedykowanej podstronie asystenta.
-2. Frontend wysyła zapytanie do backendu FastAPI.
-3. Backend przygotowuje kontekst rozmowy i wyszukuje odpowiednie fragmenty zatwierdzonej knowledge base.
-4. Model językowy otrzymuje pytanie, instrukcje oraz wybrane fragmenty źródłowe.
-5. Odpowiedź jest zwracana wraz z odnośnikami do odpowiednich stron i sekcji portfolio.
+Retriever filtruje wyniki według języka, dzięki czemu polskie pytania korzystają z polskich źródeł, a angielskie z angielskich.
 
-Planowane jest zastosowanie Retrieval-Augmented Generation (RAG), czyli połączenia wyszukiwania informacji z generowaniem odpowiedzi przez LLM. Dokumenty Markdown będą źródłem wiedzy, a indeks wektorowy ich odtwarzalną reprezentacją.
+Dla obecnego niewielkiego zbioru wiedzy wykorzystywane jest dokładne wyszukiwanie wektorowe bez indeksu HNSW. Jest to świadoma decyzja wynikająca z małej liczby fragmentów.
 
-## Knowledge base i źródła
+## Generowanie odpowiedzi i cytowania
 
-Knowledge base będzie zawierała wyłącznie informacje, które świadomie zatwierdzę do publicznego udostępnienia. Obejmie profil zawodowy, doświadczenie, wykształcenie, umiejętności i szczegółowe opisy projektów.
+Model językowy otrzymuje wyłącznie fragmenty odnalezione przez warstwę retrieval oraz kontrolowane instrukcje systemowe.
 
-Dokumenty będą miały stabilne identyfikatory, wersje językowe oraz metadane pozwalające powiązać je z publicznymi adresami portfolio. Asystent nie będzie automatycznie przeszukiwał mojego prywatnego dysku, prywatnych repozytoriów ani niepublicznych danych osobowych.
+Odpowiedź ma ustrukturyzowaną postać zawierającą:
 
-Nie chcę, aby bot odpowiadał na podstawie informacji prywatnych lub niezatwierdzonych. Jeśli wiedza nie wystarcza do udzielenia odpowiedzi, system powinien jasno komunikować brak podstaw zamiast zgadywać.
+- informację, czy pytanie może zostać odpowiedziane na podstawie dostępnych źródeł;
+- treść odpowiedzi;
+- listę numerów wykorzystanych źródeł.
 
-## Planowany stack i decyzje techniczne
+Odpowiedzi zawierają cytowania w formacie `[1]`, `[2]` itd. Backend weryfikuje, czy wszystkie numery cytowań rzeczywiście odnoszą się do fragmentów zwróconych przez retriever oraz czy cytowania w tekście są zgodne z ustrukturyzowaną listą źródeł.
 
-Obecnie używane technologie to Python, FastAPI, Jinja2, HTML, CSS i JavaScript. Do dalszego rozwoju planuję wykorzystać PostgreSQL z rozszerzeniem pgvector, SQLAlchemy, Pydantic, zewnętrzne API LLM i embeddings, pytest, Docker oraz GitHub Actions.
+Do użytkownika zwracane są tylko źródła rzeczywiście wykorzystane w odpowiedzi.
 
-Wybór konkretnego dostawcy modeli pozostaje otwarty. Chcę porównać dostępne rozwiązania pod kątem jakości odpowiedzi w języku polskim i angielskim, kosztu, opóźnienia oraz warunków przetwarzania danych. Kod aplikacji ma być możliwie niezależny od jednego providera.
+Kliknięcie cytowania lub źródła prowadzi do odpowiedniej strony portfolio. Dla wybranych sekcji strony „O mnie” obsługiwane są również deep linki, które otwierają właściwą sekcję, np. wykształcenie lub doświadczenie.
 
-Na początku nie planuję używać rozbudowanego frameworka agentowego. Najpierw chcę zrozumieć i samodzielnie zaimplementować podstawowy przepływ RAG, a dopiero później ocenić, czy dodatkowe biblioteki rzeczywiście upraszczają projekt.
+## Abstention i ograniczanie halucynacji
 
-## Planowana ewaluacja
+Jeżeli dostępne źródła nie zawierają wystarczających informacji, chatbot powinien odmówić udzielenia konkretnej odpowiedzi zamiast uzupełniać ją na podstawie domysłów.
 
-Projekt ma posiadać własny zbiór pytań testowych obejmujący doświadczenie, projekty, umiejętności, pytania przekrojowe oraz pytania, na które knowledge base nie zawiera odpowiedzi.
+Brak informacji w bazie wiedzy nie jest interpretowany jako dowód, że dana rzecz nie istnieje.
 
-Chcę oddzielnie oceniać jakość retrievalu i jakość generowanej odpowiedzi. W planie są eksperymenty dotyczące podziału dokumentów na chunki, liczby pobieranych fragmentów, sposobu wyszukiwania i doboru modelu. Będę również analizował przypadki, w których system zwraca niewłaściwe źródła, niepoprawne fakty lub odpowiedzi bez wystarczającego uzasadnienia.
+Podczas eksperymentów analizowano również możliwość zastosowania progu odległości wektorowej jako automatycznego mechanizmu abstention. Na małym zestawie testowym zakresy wyników dla pytań odpowiedzialnych i nieodpowiedzialnych nakładały się na siebie, dlatego nie wprowadzono arbitralnego progu similarity.
 
-Wyniki eksperymentów zostaną udokumentowane dopiero po ich przeprowadzeniu. Nie deklaruję jeszcze żadnych wartości metryk.
+## Kontekst rozmowy
 
-## Bezpieczeństwo i prywatność
+Chatbot obsługuje krótki kontekst rozmowy.
 
-Klucze API i hasła nie będą umieszczane w publicznym repozytorium ani w kodzie frontendowym. Dostęp do usług zewnętrznych będzie realizowany przez backend z odpowiednią konfiguracją środowiskową.
+Do retrievalu wykorzystywane są bieżące pytanie oraz ostatnie pytania użytkownika, dzięki czemu możliwe są follow-upy takie jak:
 
-Planowane są ograniczenia liczby zapytań, obsługa błędów, kontrola kosztów oraz ochrona przed próbami wykorzystania treści źródłowych lub pytań użytkownika do zmiany zasad działania asystenta. Dokumenty pobrane przez RAG będą traktowane jako dane, a nie jako instrukcje o wyższym priorytecie.
+„A które z nich były związane z bazą danych?”
 
-W publicznej wersji nie zamierzam gromadzić niepotrzebnych danych osobowych użytkowników. Szczegóły retencji logów i polityki prywatności zostaną ustalone przed wdrożeniem.
+Poprzednie odpowiedzi modelu mogą być przekazywane do generowania jako kontekst rozmowy, ale nie są traktowane jako źródło faktów i nie są wykorzystywane jako materiał do retrieval.
 
-## Planowane funkcjonalności dodatkowe
+Historia jest obecnie przechowywana po stronie przeglądarki i nie jest trwale zapisywana w bazie danych.
 
-Po ukończeniu podstawowego, działającego RAG rozważam dodanie analizy treści ogłoszenia o pracę. Funkcja miałaby porównywać wymagania stanowiska z udokumentowanymi umiejętnościami i projektami, wskazując zarówno potwierdzone dopasowania, jak i braki w dostępnych informacjach.
+## Dwujęzyczność
 
-W dalszym etapie planuję również wybrane użycie tool callingu, np. do pobierania uporządkowanych danych o projektach. Nie będzie to jednak pełnoprawny autonomiczny agent, jeśli taki poziom złożoności nie będzie potrzebny.
+Portfolio i chatbot obsługują język polski i angielski.
+
+Język interfejsu, retrievalu, instrukcji dla modelu oraz odpowiedzi jest kontrolowany przez parametr języka aplikacji. Linki do źródeł zachowują aktualnie wybraną wersję językową.
+
+## API i komunikacja z frontendem
+
+Aplikacja udostępnia zwykły endpoint JSON oraz endpoint oparty na Server-Sent Events.
+
+SSE jest wykorzystywane do przekazywania informacji o stanie przetwarzania i końcowego wyniku. Odpowiedź modelu nie jest obecnie streamowana token po tokenie.
+
+Pozwala to zachować walidację całej ustrukturyzowanej odpowiedzi przed pokazaniem jej użytkownikowi.
+
+## Ewaluacja retrievalu
+
+Dla pierwszego ręcznie przygotowanego zestawu 12 pytań w języku polskim i angielskim uzyskano:
+
+- Document Hit@1: 100%;
+- Document Hit@5: 100%;
+- Section Hit@1: 83,3%;
+- Section Hit@5: 91,7%;
+- Section Hit@8: 100%;
+- MRR: 0,873.
+
+Na podstawie tych wyników liczba fragmentów przekazywanych do generowania została zwiększona z `top_k=5` do `top_k=8`.
+
+Zestaw 12 pytań jest developerskim zestawem ewaluacyjnym, a nie rozbudowanym benchmarkiem produkcyjnym.
+
+## Testowanie
+
+Projekt posiada automatyczne testy obejmujące między innymi:
+
+- ładowanie i walidację dokumentów Knowledge Base;
+- chunking i zachowanie pełnej treści dokumentów;
+- kontrakt warstwy RAG;
+- obsługę odpowiedzi i abstention;
+- walidację cytowań;
+- zachowanie historii rozmowy;
+- endpointy FastAPI;
+- odpowiedzi SSE;
+- rate limiting.
+
+Testy wykorzystują fake providery i monkeypatching tam, gdzie nie jest potrzebne rzeczywiste połączenie z modelem językowym lub bazą danych, dzięki czemu podstawowe testy są deterministyczne i nie generują kosztów API.
+
+## Bezpieczeństwo
+
+Klucze API i dane konfiguracyjne są przechowywane po stronie serwera i nie są udostępniane frontendowi.
+
+Aplikacja posiada między innymi:
+
+- ograniczenie długości wiadomości i historii rozmowy;
+- rate limiting dla endpointów chatu;
+- walidację struktury odpowiedzi modelu;
+- walidację numerów cytowań;
+- instrukcje ograniczające prompt injection;
+- zasadę odpowiadania wyłącznie na podstawie zatwierdzonych źródeł;
+- podstawowe nagłówki bezpieczeństwa HTTP;
+- brak permissive CORS, ponieważ frontend i API działają w tym samym originie.
+
+Rate limiter jest obecnie implementacją in-memory przeznaczoną dla pojedynczej instancji aplikacji. W środowisku wieloinstancyjnym wymagałby współdzielonego magazynu stanu, np. Redis.
+
+## Technologie
+
+W projekcie wykorzystywane są między innymi:
+
+- Python;
+- FastAPI;
+- Pydantic;
+- SQLAlchemy;
+- PostgreSQL;
+- pgvector;
+- OpenAI API;
+- embeddings;
+- Jinja2;
+- HTML;
+- CSS;
+- JavaScript;
+- Server-Sent Events;
+- pytest;
+- Docker dla PostgreSQL.
+
+Architektura providerów dla embeddings i modelu językowego została oddzielona od głównej logiki RAG, aby ograniczyć zależność aplikacji od jednego dostawcy API.
 
 ## Mój wkład i zdobywane umiejętności
 
-Samodzielnie rozwijam istniejącą aplikację portfolio i projektuję kolejne warstwy systemu AI. Dotychczas uporządkowałem strukturę aplikacji, nawigację, dane projektów i publiczne repozytorium oraz rozpocząłem przygotowanie dokumentów knowledge base.
+Jakub samodzielnie zaprojektował i implementuje architekturę projektu.
 
-Projekt ma pozwolić mi zdobyć praktyczne doświadczenie w projektowaniu i utrzymywaniu aplikacji LLM, wyszukiwaniu semantycznym, pracy z bazą danych, testowaniu, konteneryzacji, ewaluacji i deploymentcie. Ukończone elementy będę dokumentował na bieżąco, tak aby opis projektu odzwierciedlał rzeczywisty stan implementacji.
+Praca nad projektem obejmuje między innymi:
 
-## Źródła i aktualizacja dokumentu
+- projektowanie i implementację pipeline'u RAG;
+- przygotowanie dwujęzycznej bazy wiedzy;
+- chunking dokumentów;
+- integrację embeddings i wyszukiwania wektorowego;
+- pracę z PostgreSQL i pgvector;
+- integrację modelu językowego;
+- projektowanie mechanizmu cytowań i abstention;
+- przygotowanie ewaluacji retrievalu;
+- obsługę kontekstu rozmowy;
+- projektowanie API w FastAPI;
+- komunikację SSE;
+- testy jednostkowe i API;
+- podstawowe zabezpieczenia aplikacji LLM;
+- projektowanie interfejsu chatu.
 
-Repozytorium projektu: https://github.com/kubaperkowski22/jakub-perkowski-portfolio
+## Aktualny stan projektu
 
-Dokument opisuje stan projektu oraz planowane kierunki rozwoju. Przed każdym większym etapem i po jego zakończeniu będzie aktualizowany, aby oddzielać funkcjonalności już zaimplementowane od planowanych. Nie zawiera prywatnych informacji, kluczy API ani danych nieprzeznaczonych do publicznego udostępnienia.
+Projekt znajduje się w aktywnym rozwoju.

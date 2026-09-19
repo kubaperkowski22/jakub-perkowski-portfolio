@@ -29,6 +29,10 @@
     "projects_title": "Projekty",
     "projects": [
       {
+        "name": "AI Asystent Portfolio",
+        "description": "(Python, FastAPI, RAG, PostgreSQL, pgvector, OpenAI API) Dwujęzyczny chatbot RAG zintegrowany z tym portfolio. Wykorzystuje FastAPI, PostgreSQL/pgvector, embeddings i model językowy do odpowiadania na pytania na podstawie kontrolowanej bazy wiedzy. Obsługuje cytowania źródeł, abstention, krótki kontekst rozmowy, ewaluację retrievalu oraz podstawowe mechanizmy bezpieczeństwa."
+      },
+      {
         "name": "Głębokie sieci neuronowe w analizie przeżycia",
         "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Stworzenie autorskich modeli głębokich sieci neuronowych opartych na istniejących już modelach oraz porównanie ich skuteczności z klasycznymi metodami analizy przeżycia na 7 dużych zbiorach danych pacjentów onkologicznych (ponad 740 tyś. rekordów)."
       },
@@ -98,35 +102,45 @@
         "status": "in_development",
         "featured": true,
 
-        "summary": "Rozwijany asystent AI będący częścią mojego portfolio. Docelowo będzie odpowiadał na pytania dotyczące mojego doświadczenia, projektów i umiejętności na podstawie kontrolowanej bazy wiedzy.",
+        "summary": "Dwujęzyczny asystent AI zintegrowany z portfolio, wykorzystujący RAG, semantic retrieval i zweryfikowane cytowania do odpowiadania na pytania o doświadczenie, projekty i umiejętności Jakuba.",
 
         "technologies": [
           "Python",
           "FastAPI",
+          "PostgreSQL",
+          "pgvector",
+          "SQLAlchemy",
+          "Pydantic",
+          "OpenAI API",
+          "RAG",
+          "Embeddings",
           "Jinja2",
-          "HTML",
-          "CSS",
-          "JavaScript"
+          "JavaScript",
+          "SSE",
+          "pytest",
+          "Docker"
         ],
 
         "highlights": [
-          "Backend oparty na FastAPI",
-          "Dwujęzyczny interfejs PL/EN",
-          "Publiczne repozytorium GitHub",
-          "Projekt rozwijany iteracyjnie w kierunku systemu RAG"
+          "Dwujęzyczny pipeline RAG oparty na kontrolowanej bazie wiedzy",
+          "Semantic retrieval z embeddings, PostgreSQL i pgvector",
+          "Ustrukturyzowane odpowiedzi z walidowanymi cytowaniami i mechanizmem abstention",
+          "Krótki kontekst rozmowy i obsługa pytań follow-up",
+          "Ewaluacja retrievalu i tuning top-k na podstawie wyników",
+          "SSE, rate limiting, testy automatyczne i podstawowe zabezpieczenia aplikacji LLM"
         ],
 
         "github_url": "https://github.com/kubaperkowski22/jakub-perkowski-portfolio",
         "live_url": null,
 
         "details": {
-          "overview": "Projekt ma przekształcić statyczne portfolio w interaktywną aplikację AI, w której rekruter może zadawać pytania dotyczące mojego doświadczenia zawodowego, projektów, wykształcenia i umiejętności.",
-          "problem": "Klasyczne portfolio wymaga od użytkownika samodzielnego wyszukiwania informacji na wielu sekcjach strony lub w pliku CV. Celem projektu jest umożliwienie dostępu do tych informacji za pomocą języka naturalnego.",
-          "approach": "System jest rozwijany etapami. Docelowa architektura zakłada wykorzystanie Retrieval-Augmented Generation, oddzielnej bazy wiedzy, wyszukiwania wektorowego oraz generowania odpowiedzi przez model językowy z podaniem źródeł.",
-          "technical_details": "Na obecnym etapie aplikacja wykorzystuje FastAPI jako backend, Jinja2 do renderowania szablonów oraz HTML, CSS i JavaScript po stronie przeglądarki. Projekt posiada również obsługę języka polskiego i angielskiego oraz uporządkowaną strukturę przygotowaną pod dalszą rozbudowę.",
-          "evaluation": "Ewaluacja systemu RAG zostanie dodana po implementacji retrievalu i generowania odpowiedzi. Planowane jest przygotowanie własnego zbioru pytań testowych oraz pomiar jakości retrievalu, poprawności odpowiedzi i halucynacji.",
-          "results": "Projekt jest obecnie w trakcie realizacji. Gotowy jest fundament aplikacji webowej i infrastruktura kodu potrzebna do dalszego rozwoju części AI.",
-          "lessons": "Projekt jest wykorzystywany jako praktyczne środowisko do nauki projektowania aplikacji AI od poziomu architektury, przez backend i dane, aż po późniejszą ewaluację, testy i deployment."
+          "overview": "AI Portfolio Assistant to dwujęzyczny chatbot zintegrowany z portfolio, który odpowiada na pytania dotyczące mojego doświadczenia zawodowego, projektów, wykształcenia i umiejętności. Odpowiedzi są generowane na podstawie kontrolowanej bazy wiedzy i zawierają odwołania do źródeł znajdujących się w portfolio.",
+          "problem": "Klasyczne portfolio wymaga od użytkownika samodzielnego wyszukiwania informacji w wielu sekcjach strony lub w CV. Projekt rozwiązuje ten problem, umożliwiając zadawanie pytań w języku naturalnym, przy jednoczesnym ograniczeniu odpowiedzi modelu do zweryfikowanych, publicznych informacji o mnie.",
+          "approach": "System wykorzystuje Retrieval-Augmented Generation. Dwujęzyczna baza wiedzy w plikach Markdown jest walidowana i dzielona na fragmenty zgodnie ze strukturą dokumentów. Dla fragmentów generowane są embeddings, które są przechowywane wraz z treścią w PostgreSQL z rozszerzeniem pgvector. Pytanie użytkownika jest przekształcane do postaci wektorowej, a najbardziej zbliżone fragmenty są przekazywane do modelu językowego jako kontekst. Odpowiedź ma ustrukturyzowaną formę i przechodzi dodatkową walidację cytowań przed wyświetleniem użytkownikowi.",
+          "technical_details": "Backend został zbudowany w Pythonie z wykorzystaniem FastAPI, Pydantic i SQLAlchemy. Warstwa RAG wykorzystuje PostgreSQL, pgvector, embeddings oraz zewnętrzne API modelu językowego za abstrakcją providerów. Frontend wykorzystuje Jinja2, HTML, CSS i vanilla JavaScript. Chat obsługuje język polski i angielski, krótki kontekst rozmowy, pytania follow-up, cytowania źródeł, deep linki do wybranych sekcji portfolio oraz mechanizm abstention w przypadku niewystarczających danych. Komunikacja z interfejsem wykorzystuje również Server-Sent Events do przekazywania stanu przetwarzania i końcowej odpowiedzi. Aplikacja posiada limity długości wejścia, rate limiting, walidację cytowań, podstawowe zabezpieczenia przed prompt injection oraz automatyczne testy. PostgreSQL z pgvector jest obecnie uruchamiany w Dockerze.",
+          "evaluation": "Retrieval został oceniony na ręcznie przygotowanym zestawie 12 pytań w języku polskim i angielskim. Uzyskano Document Hit@1 = 100%, Section Hit@1 = 83,3%, Section Hit@5 = 91,7%, Section Hit@8 = 100% oraz MRR = 0,873. Na podstawie wyników liczba fragmentów przekazywanych do generowania została zwiększona z top_k=5 do top_k=8. Sprawdzano również pytania bez odpowiedzi w bazie wiedzy, poprawność abstention, zachowanie cytowań oraz odporność na podstawowe próby prompt injection. Zestaw ma charakter developerski i nie jest traktowany jako rozbudowany benchmark produkcyjny.",
+          "results": "Działa pełny przepływ od pytania użytkownika, przez semantic retrieval i generowanie odpowiedzi, aż po walidowane cytowania i linkowanie do źródeł w portfolio. Chatbot obsługuje język polski i angielski, krótką historię rozmowy oraz poprawne odmawianie odpowiedzi, gdy baza wiedzy nie dostarcza wystarczających informacji. Warstwa RAG, API, interfejs chatu, testy i podstawowe zabezpieczenia działają lokalnie. Projekt nadal jest rozwijany, a kolejnym głównym etapem jest przygotowanie całej aplikacji do deploymentu.",
+          "lessons": "Projekt pozwolił mi przejść przez cały proces budowy aplikacji RAG: od projektowania źródeł wiedzy i chunkingu, przez embeddings, wyszukiwanie wektorowe i integrację LLM, aż po ewaluację, cytowania, abstention, bezpieczeństwo, testy i interfejs użytkownika. Ważnym wnioskiem było podejmowanie decyzji na podstawie pomiarów zamiast arbitralnych parametrów — przykładem było dobranie top_k na podstawie wyników ewaluacji oraz rezygnacja z prostego progu similarity, gdy wyniki dla pytań odpowiedzialnych i nieodpowiedzialnych nakładały się na siebie."
         }
       },
 

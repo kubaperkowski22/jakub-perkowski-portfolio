@@ -29,6 +29,10 @@
     "projects_title": "Projects",
     "projects": [
       {
+        "name": "AI Asystent Portfolio",
+        "description": "(Python, FastAPI, RAG, PostgreSQL, pgvector, OpenAI API) A bilingual RAG chatbot integrated into this portfolio. It uses FastAPI, PostgreSQL/pgvector, embeddings, and a language model to answer questions from a controlled knowledge base. It supports source citations, abstention, short conversation context, retrieval evaluation, and baseline security mechanisms."
+      },
+      {
         "name": "Deep Neural Networks in Survival Analysis",
         "description": "(Python, PyTorch, PyCox, Scikit-Learn, Pandas, Matplotlib) Developing custom deep neural network models based on existing models and comparing their effectiveness with classical survival analysis methods on 7 large datasets of oncology patients (over 741,000 records)."
       },
@@ -98,35 +102,45 @@
         "status": "in_development",
         "featured": true,
 
-        "summary": "An AI assistant being developed as part of my portfolio. Its goal is to answer questions about my experience, projects and technical skills using a controlled knowledge base.",
+        "summary": "A bilingual AI assistant integrated into the portfolio, using RAG, semantic retrieval, and validated citations to answer questions about Jakub's experience, projects, and skills.",
 
         "technologies": [
           "Python",
           "FastAPI",
+          "PostgreSQL",
+          "pgvector",
+          "SQLAlchemy",
+          "Pydantic",
+          "OpenAI API",
+          "RAG",
+          "Embeddings",
           "Jinja2",
-          "HTML",
-          "CSS",
-          "JavaScript"
+          "JavaScript",
+          "SSE",
+          "pytest",
+          "Docker"
         ],
 
         "highlights": [
-          "FastAPI backend",
-          "Bilingual Polish/English interface",
-          "Public GitHub repository",
-          "Iterative development towards a RAG-based system"
+          "Bilingual RAG pipeline built on a controlled knowledge base",
+          "Semantic retrieval using embeddings, PostgreSQL, and pgvector",
+          "Structured answers with validated citations and abstention",
+          "Short conversation context with follow-up question support",
+          "Retrieval evaluation and data-driven top-k tuning",
+          "SSE, rate limiting, automated tests, and baseline LLM application security"
         ],
 
         "github_url": "https://github.com/kubaperkowski22/jakub-perkowski-portfolio",
         "live_url": null,
 
         "details": {
-          "overview": "The project aims to transform a static portfolio into an interactive AI application where recruiters can ask questions about my professional experience, projects, education and technical skills.",
-          "problem": "Traditional portfolios require users to manually search through multiple sections of a website or a PDF resume. The goal is to make this information accessible through natural-language questions.",
-          "approach": "The system is being developed incrementally. The target architecture includes Retrieval-Augmented Generation, a separate knowledge base, vector search and LLM-based answer generation with source attribution.",
-          "technical_details": "At its current stage, the application uses FastAPI as the backend, Jinja2 for server-side templates and HTML, CSS and JavaScript in the browser. It also supports Polish and English and has been structured for further AI-related development.",
-          "evaluation": "RAG evaluation will be introduced after retrieval and generation are implemented. The plan is to create a manually curated evaluation dataset and measure retrieval quality, answer correctness and hallucination behavior.",
-          "results": "The project is currently under development. The web application foundation and code structure required for the future AI components have been completed.",
-          "lessons": "The project serves as a practical environment for learning how to design an AI application from architecture and backend development through data handling, evaluation, testing and deployment."
+          "overview": "AI Portfolio Assistant is a bilingual chatbot integrated into the portfolio that answers questions about my professional experience, projects, education, and skills. Answers are generated from a controlled knowledge base and include references to supporting sources available in the portfolio.",
+          "problem": "A traditional portfolio requires users to search manually across multiple sections of the website or a CV. This project addresses that problem by allowing recruiters and other visitors to ask questions in natural language while restricting the model to verified, public information about me.",
+          "approach": "The system uses Retrieval-Augmented Generation. A bilingual Markdown knowledge base is validated and split into chunks according to document structure. Embeddings are generated for the chunks and stored together with their content in PostgreSQL with pgvector. The user's question is converted into a vector representation, and the most relevant chunks are supplied to the language model as context. The generated response has a structured format and its citations are validated before the answer is shown to the user.",
+          "technical_details": "The backend is implemented in Python using FastAPI, Pydantic, and SQLAlchemy. The RAG layer uses PostgreSQL, pgvector, embeddings, and an external language-model API behind provider abstractions. The frontend uses Jinja2, HTML, CSS, and vanilla JavaScript. The chat supports Polish and English, short conversation context, follow-up questions, source citations, deep links to selected portfolio sections, and abstention when the available evidence is insufficient. Server-Sent Events are used to deliver processing status and the final validated response to the interface. The application also includes input-size limits, rate limiting, citation validation, baseline prompt-injection protections, and automated tests. PostgreSQL with pgvector is currently run in Docker.",
+          "evaluation": "Retrieval was evaluated on a manually prepared development set of 12 Polish and English questions. The system achieved Document Hit@1 = 100%, Section Hit@1 = 83.3%, Section Hit@5 = 91.7%, Section Hit@8 = 100%, and MRR = 0.873. Based on these results, the number of chunks supplied to answer generation was increased from top_k=5 to top_k=8. The evaluation also covered unanswerable questions, abstention behavior, citation handling, and basic prompt-injection attempts. The dataset is a development evaluation set rather than a large production benchmark.",
+          "results": "The complete flow from a user question through semantic retrieval and answer generation to validated citations and portfolio source links is working. The chatbot supports Polish and English, short conversation history, and appropriate abstention when the knowledge base does not contain sufficient evidence. The RAG layer, API, chat interface, automated tests, and baseline security mechanisms are working locally. The project remains under active development, with production preparation and deployment as the next major stage.",
+          "lessons": "The project provided practical experience across the full RAG application lifecycle: designing knowledge sources and chunking, generating embeddings, vector retrieval, LLM integration, evaluation, citations, abstention, security, testing, and user-interface development. One of the main lessons was to make engineering decisions based on measurements rather than arbitrary parameters—for example, selecting top_k based on retrieval evaluation and deciding not to introduce a simple similarity threshold when the scores for answerable and unanswerable questions overlapped."
         }
       },
 
