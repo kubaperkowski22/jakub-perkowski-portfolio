@@ -223,3 +223,9 @@ async def add_security_headers(
         ] = "no-cache, no-store"
 
     return response
+
+@app.get("/health", include_in_schema=False,)
+def health():
+    return {
+        "status": "ok"
+    }
