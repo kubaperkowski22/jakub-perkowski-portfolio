@@ -1,14 +1,34 @@
 from fastapi.testclient import TestClient
 
 from main import app
-from rag.service import (
-    AnswerSource,
-    RAGAnswer,
-)
-
+from rag.service import AnswerSource, RAGAnswer
+import pytest
+from api.dependencies import get_embedding_provider, get_llm_provider
 
 client = TestClient(app)
 
+
+@pytest.fixture(autouse=True)
+def override_chat_dependencies():
+    app.dependency_overrides[
+        get_embedding_provider
+    ] = lambda: object()
+
+    app.dependency_overrides[
+        get_llm_provider
+    ] = lambda: object()
+
+    yield
+
+    app.dependency_overrides.pop(
+        get_embedding_provider,
+        None,
+    )
+
+    app.dependency_overrides.pop(
+        get_llm_provider,
+        None,
+    )
 
 def test_chat_returns_answer_with_sources(
     monkeypatch,
