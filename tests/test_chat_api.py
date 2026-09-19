@@ -258,3 +258,26 @@ def test_chat_stream_returns_error_event(
         "Simulated failure"
         not in response.text
     )
+
+
+from api.source_links import (
+    get_source_anchor,
+)
+
+
+def test_source_anchor_for_education():
+    assert (
+        get_source_anchor(
+            "profile.education"
+        )
+        == "education"
+    )
+
+
+def test_source_anchor_is_optional():
+    assert (
+        get_source_anchor(
+            "project.diagnose-me"
+        )
+        is None
+    )

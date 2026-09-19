@@ -245,7 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const link = document.createElement("a");
 
             link.href = buildLocalizedSourceUrl(
-                source.source_path
+                source.source_path,
+                source.source_anchor
             );
 
             let label =
@@ -275,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messages.scrollTop = messages.scrollHeight;
     }
 
-    function buildLocalizedSourceUrl(sourcePath) {
+    function buildLocalizedSourceUrl(sourcePath, sourceAnchor = null) {
         const url = new URL(
             sourcePath,
             window.location.origin
@@ -285,6 +286,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "lang",
             language
         );
+
+        if (sourceAnchor) {
+            url.hash = sourceAnchor;
+        }
 
         return (
             url.pathname
@@ -360,7 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 link.href =
                     buildLocalizedSourceUrl(
-                        source.source_path
+                        source.source_path,
+                        source.source_anchor
                     );
 
                 link.textContent =

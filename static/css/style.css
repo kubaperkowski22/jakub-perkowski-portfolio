@@ -1288,3 +1288,10 @@ details[open].info-group summary::before {
 .chat-sources[open] summary {
     margin-bottom: 0.6rem;
 }
+
+#about,
+#experience,
+#education,
+#skills {
+    scroll-margin-top: 110px;
+}

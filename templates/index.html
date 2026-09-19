@@ -13,7 +13,7 @@
             </div>
 
             <!-- podstawowe informacje -->
-            <details class="info-group">
+            <details class="info-group" id="about">
                 <summary><h3>{{ content.about.basic_info_title }}</h3></summary>
                 <div class="details-content">
                     <p>{{ content.about.basic_info_desc }}</p>
@@ -21,7 +21,7 @@
             </details>
 
             <!-- doświadczenie -->
-            <details class="info-group">
+            <details class="info-group" id="experience">
                 <summary><h3>{{ content.about.experience_title }}</h3></summary>
                 <div class="details-content">
                     {% for exp in content.about.experience %}
@@ -38,7 +38,7 @@
             </details>
 
             <!-- projekty -->
-            <details class="info-group">
+            <details class="info-group" id="projects">
                 <summary><h3>{{ content.about.projects_title }}</h3></summary>
                 <div class="details-content">
                     {% for proj in content.about.projects %}
@@ -51,7 +51,7 @@
             </details>
 
             <!-- wykształcenie -->
-            <details class="info-group">
+            <details class="info-group" id="education">
                 <summary><h3>{{ content.about.education_title }}</h3></summary>
                 <div class="details-content">
                     {% for edu in content.about.education %}
@@ -64,7 +64,7 @@
             </details>
 
             <!-- skills -->
-            <details class="info-group">
+            <details class="info-group" id="skills">
                 <summary><h3>{{ content.about.skills_title }}</h3></summary>
                 <div class="details-content">
                     <ul class="skills-grid">

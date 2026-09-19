@@ -29,6 +29,7 @@ from api.rate_limit import (
     enforce_chat_rate_limit,
 )
 from pydantic import model_validator
+from api.source_links import get_source_anchor
 
 
 logger = logging.getLogger(__name__)
@@ -123,6 +124,7 @@ class ChatSourceResponse(BaseModel):
     number: int
     title: str
     source_path: str
+    source_anchor: str | None = None
     section: str
     subsection: str | None
 
@@ -194,6 +196,7 @@ def build_chat_response(
             number=source.number,
             title=source.title,
             source_path=source.source_path,
+            source_anchor=get_source_anchor(source.document_id),
             section=source.section,
             subsection=source.subsection,
         )
