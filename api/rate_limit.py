@@ -4,7 +4,7 @@ import time
 from collections import deque
 from functools import lru_cache
 from threading import Lock
-
+from ipaddress import ip_address
 from fastapi import (
     HTTPException,
     Request,
@@ -139,11 +139,7 @@ def get_chat_rate_limiter(
 def enforce_chat_rate_limit(
     request: Request,
 ) -> None:
-    client_host = (
-        request.client.host
-        if request.client
-        else "unknown"
-    )
+    client_host = get_client_ip(request)
 
     retry_after = (
         get_chat_rate_limiter()
@@ -167,3 +163,20 @@ def enforce_chat_rate_limit(
             )
         },
     )
+
+
+def get_client_ip(request: Request) -> str:
+    forwarded_for = request.headers.get("x-forwarded-for")
+
+    if forwarded_for:
+        candidate = forwarded_for.split(",", 1)[0].strip()
+
+        try:
+            return str(ip_address(candidate))
+        except ValueError:
+            pass
+
+    if request.client:
+        return request.client.host
+
+    return "unknown"
