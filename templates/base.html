@@ -11,7 +11,7 @@
     </title>
 
     <link rel="stylesheet"
-          href="{{ request.url_for('static', path='css/style.css') }}">
+          href="{{ request.url_for('static', path='css/style.css').path }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
 </head>
 
@@ -29,7 +29,7 @@
             aria-label="{% if current_lang == 'pl' %}Nawigacja główna{% else %}Main navigation{% endif %}"
         >
             <a
-                href="{{ request.url_for('chat_page') }}?lang={{ current_lang }}"
+                href="{{ request.url_for('chat_page').path }}?lang={{ current_lang }}"
                 class="nav-ai-link {% if active_page == 'chat' %}active{% endif %}"
             >
                 <span class="nav-ai-icon" aria-hidden="true">✦</span>
@@ -42,7 +42,7 @@
             </a>
 
             <a
-                href="{{ request.url_for('about_page') }}?lang={{ current_lang }}"
+                href="{{ request.url_for('about_page').path }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'about' %} active{% endif %}"
                 {% if active_page == 'about' %}aria-current="page"{% endif %}
             >
@@ -52,7 +52,7 @@
             <span class="separator" aria-hidden="true">|</span>
 
             <a
-                href="{{ request.url_for('projects_page') }}?lang={{ current_lang }}"
+                href="{{ request.url_for('projects_page').path }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'projects' %} active{% endif %}"
                 {% if active_page == 'projects' %}aria-current="page"{% endif %}
             >
@@ -62,7 +62,7 @@
             <span class="separator" aria-hidden="true">|</span>
 
             <a
-                href="{{ request.url_for('contact_page') }}?lang={{ current_lang }}"
+                href="{{ request.url_for('contact_page').path }}?lang={{ current_lang }}"
                 class="nav-item{% if active_page == 'contact' %} active{% endif %}"
                 {% if active_page == 'contact' %}aria-current="page"{% endif %}
             >
@@ -114,7 +114,7 @@
     </main>
     
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="{{ request.url_for('static', path='js/common.js') }}"></script>
+    <script src="{{ request.url_for('static', path='js/common.js').path }}"></script>
 
     {% block scripts %}
     {% endblock %}

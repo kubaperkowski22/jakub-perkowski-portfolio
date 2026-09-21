@@ -89,7 +89,7 @@
         </section>
 
         <div class="download-container">
-            <a href="{{ request.url_for('download_cv') }}" class="download-btn">
+            <a href="{{ request.url_for('download_cv').path }}" class="download-btn">
                 <span>{{ content.cv_button }}</span>
                 <i data-lucide="download"></i>
             </a>
@@ -98,5 +98,5 @@
     {% endblock %}
 
     {% block scripts %}
-    <script src="{{ request.url_for('static', path='js/about.js') }}"></script>
+    <script src="{{ request.url_for('static', path='js/about.js').path }}"></script>
     {% endblock %}

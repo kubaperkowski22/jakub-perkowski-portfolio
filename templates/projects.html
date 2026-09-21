@@ -70,7 +70,7 @@ Jakub Perkowski - {{ content.projects_page.title }}
             <div class="project-card__actions">
                 {% if project.github_url %}
                     <a
-                        href="{{ request.url_for('project_detail', slug=project.slug).include_query_params(lang=current_lang) }}"
+                        href="{{ request.url_for('project_detail', slug=project.slug).include_query_params(lang=current_lang).path }}"
                         class="project-link project-link--primary"
                     >
                         <i data-lucide="arrow-right" aria-hidden="true"></i>
@@ -83,7 +83,7 @@ Jakub Perkowski - {{ content.projects_page.title }}
                         rel="noopener noreferrer"
                     >
                         <img
-                            src="{{ request.url_for('static', path='img/GitHub_Invertocat_White.svg') }}"
+                            src="{{ request.url_for('static', path='img/GitHub_Invertocat_White.svg').path }}"
                             class="project-link__icon"
                             alt=""
                             aria-hidden="true"
