@@ -193,4 +193,11 @@ Praca nad projektem obejmuje między innymi:
 
 ## Aktualny stan projektu
 
-Projekt znajduje się w aktywnym rozwoju.
+Projekt został ukończony i wdrożony publicznie jako działająca wersja v1.
+
+Aplikacja działa na Renderze, korzysta z zarządzanej bazy PostgreSQL z pgvector i udostępnia dwujęzyczny chatbot RAG z cytowaniami, obsługą follow-up questions, abstention oraz Server-Sent Events.
+
+Projekt posiada testy automatyczne i pipeline CI oparty na GitHub Actions.
+
+## Live demo
+Aplikacja jest dostępna na tej stronie pod adresem "/chat?lang=pl" lub "/chat?lang=en"

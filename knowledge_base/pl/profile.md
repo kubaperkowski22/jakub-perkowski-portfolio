@@ -21,7 +21,7 @@ Poszukuję pracy na polskim rynku jako AI Engineer, ML Engineer, LLM Engineer lu
 
 ## Projekty
 
-- **AI Portfolio Assistant** — rozwijany projekt flagowy, którego celem jest stworzenie asystenta RAG odpowiadającego na pytania o moje publiczne doświadczenie, projekty i umiejętności. Obecnie działa fundament aplikacji webowej i przygotowywana jest knowledge base. Szczegóły: `/projekty/ai-portfolio-assistant`.
+- **AI Portfolio Assistant** — projekt flagowy: asystent RAG odpowiadający na pytania o moje publiczne doświadczenie, projekty i umiejętności. Został wdrożony jako skonteneryzowana aplikacja internetowa z automatycznymi testami i pipeline'em CI. Szczegóły: `/projekty/ai-portfolio-assistant`.
 - **Deep Neural Networks in Survival Analysis** — praca magisterska obejmująca DeepSurv, DeepHit, dwa własne warianty z FeatureAttention oraz eksperymenty na siedmiu zbiorach onkologicznych. Szczegóły: `/projekty/survival-analysis`.
 - **DiagnoseMe** — prototyp pracy inżynierskiej: aplikacja WPF do wstępnej oceny objawów, integrująca strukturyzowany wywiad z OpenAI API. Nie jest klinicznie zwalidowanym systemem medycznym. Szczegóły: `/projekty/diagnose-me`.
 - **News Extractor** — samodzielnie wykonany projekt akademicki NLP, łączący klasyfikację polskich tekstów z ekstrakcją informacji. Szczegóły: `/projekty/news-extractor`.

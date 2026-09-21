@@ -21,7 +21,7 @@ I am looking for opportunities in the Polish job market as an AI Engineer, ML En
 
 ## Projects
 
-- **AI Portfolio Assistant** — my flagship project under development, intended to create a RAG assistant that answers questions about my public experience, projects, and skills. The web application foundation is implemented, and the knowledge base is being prepared. Details: `/projekty/ai-portfolio-assistant`.
+- **AI Portfolio Assistant** — flagship project: a RAG assistant that answers questions about my public experience, projects, and skills. It has been deployed as a containerized web application with automated tests and a CI pipeline. Details: `/projekty/ai-portfolio-assistant`.
 - **Deep Neural Networks in Survival Analysis** — my master's thesis, covering DeepSurv, DeepHit, two custom variants with FeatureAttention, and experiments on seven oncology datasets. Details: `/projekty/survival-analysis`.
 - **DiagnoseMe** — an engineering-thesis prototype: a WPF application for preliminary symptom assessment that combines a structured interview with the OpenAI API. It is not a clinically validated medical system. Details: `/projekty/diagnose-me`.
 - **News Extractor** — an independently developed academic NLP project combining Polish text classification with information extraction. Details: `/projekty/news-extractor`.

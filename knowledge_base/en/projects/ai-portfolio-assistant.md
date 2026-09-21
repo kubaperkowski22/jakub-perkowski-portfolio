@@ -195,4 +195,11 @@ His work on the project includes:
 
 ## Current project status
 
-The project is under active development.
+The project has been completed and publicly deployed as a working v1.
+
+The application runs on Render, uses managed PostgreSQL with pgvector, and provides a bilingual RAG chatbot with citations, follow-up question support, abstention, and Server-Sent Events.
+
+The project includes automated tests and a GitHub Actions CI pipeline.
+
+## Live demo
+Live demo is available on this website at "/chat?lang=en" or "/chat?lang=pl"
