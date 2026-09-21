@@ -1,0 +1,1155 @@
+[
+  {
+    "id": "pl-survival-datasets",
+    "language": "pl",
+    "question": "Na ilu zbiorach danych porównano modele w pracy magisterskiej?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "siedem zbiorów danych onkologicznych"
+    ],
+    "answer": "Modele w pracy magisterskiej porównano na **siedmiu zbiorach danych onkologicznych**. [3]",
+    "citations": [
+      3
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.survival-analysis",
+        "section": "Metodologia eksperymentów",
+        "subsection": "Główny eksperyment",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4181150247362051
+      },
+      {
+        "number": 2,
+        "document_id": "project.survival-analysis",
+        "section": "Ewaluacja",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.42419200911502997
+      },
+      {
+        "number": 3,
+        "document_id": "profile.education",
+        "section": "Studia magisterskie — Informatyka",
+        "subsection": "Praca magisterska",
+        "source_path": "/o-mnie",
+        "distance": 0.4300091081788724
+      },
+      {
+        "number": 4,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": "Ograniczenia interpretacyjne",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4569823221345978
+      },
+      {
+        "number": 5,
+        "document_id": "project.survival-analysis",
+        "section": "Wyniki głównego porównania",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.46028836591505995
+      },
+      {
+        "number": 6,
+        "document_id": "project.news-extractor",
+        "section": "Modele klasyfikacyjne",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.46535538384518993
+      },
+      {
+        "number": 7,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": "Porównanie rankingów cech",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.46873386162245145
+      },
+      {
+        "number": 8,
+        "document_id": "project.survival-analysis",
+        "section": "Modele bazowe",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.47375659631411215
+      }
+    ],
+    "top_distance": 0.4181150247362051,
+    "top3_average_distance": 0.4241053806767025
+  },
+  {
+    "id": "pl-diagnose-tech",
+    "language": "pl",
+    "question": "Jakich technologii użyto w DiagnoseMe?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "C#",
+      ".NET",
+      "WPF",
+      "MVVM",
+      "Entity Framework Core",
+      "Azure SQL",
+      "OpenAI API"
+    ],
+    "answer": "W DiagnoseMe użyto następujących technologii i narzędzi:\n\n- **C#, WPF i XAML** — do stworzenia desktopowego interfejsu i logiki aplikacji dla Windows. [7]\n- **.NET oraz wzorzec MVVM** — organizacja aplikacji, z wykorzystaniem warstw prezentacji, logiki i danych. [7]\n- **CommunityToolkit.Mvvm** — wsparcie implementacji MVVM i powiadamiania o zmianach właściwości. [7]\n- **MahApps.Metro oraz MahApps.Metro.IconPacks** — style, kontrolki i ikony interfejsu. [7]\n- **Entity Framework Core** — obsługa encji, migracji i operacji na relacyjnej bazie danych. [7]\n- **Azure SQL / SQL Server** — przechowywanie kont użytkowników, wyników diagnoz i wizyt. [7][8]\n- **Microsoft.Extensions.DependencyInjection** — zarządzanie zależnościami. [7]\n- **OpenAI API** z gotowym modelem **GPT** — generowanie odpowiedzi na podstawie danych z wywiadu; komunikacja odbywała się przez asynchroniczne żądania HTTP. [3][4]\n- **Inno Setup Compiler** — przygotowanie instalatora aplikacji. [6][7]",
+    "citations": [
+      3,
+      4,
+      6,
+      7,
+      8
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.diagnose-me",
+        "section": "Kontekst i cel projektu",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.2975894303669421
+      },
+      {
+        "number": 2,
+        "document_id": "project.diagnose-me",
+        "section": "Źródła i zakres dokumentu",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.3586745410489588
+      },
+      {
+        "number": 3,
+        "document_id": "project.diagnose-me",
+        "section": "Proces wstępnej oceny objawów",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.3617807414986718
+      },
+      {
+        "number": 4,
+        "document_id": "project.diagnose-me",
+        "section": "Integracja z modelem językowym",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.3627504203377253
+      },
+      {
+        "number": 5,
+        "document_id": "profile.education",
+        "section": "Studia inżynierskie — Informatyka",
+        "subsection": "Praca inżynierska",
+        "source_path": "/o-mnie",
+        "distance": 0.3769664369381308
+      },
+      {
+        "number": 6,
+        "document_id": "project.diagnose-me",
+        "section": "Testowanie i wdrożenie historyczne",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.3813798313796548
+      },
+      {
+        "number": 7,
+        "document_id": "project.diagnose-me",
+        "section": "Architektura i technologie",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.39747424406649257
+      },
+      {
+        "number": 8,
+        "document_id": "project.diagnose-me",
+        "section": "Warstwa danych i pozostałe funkcjonalności",
+        "subsection": null,
+        "source_path": "/projekty/diagnose-me",
+        "distance": 0.4026755419439282
+      }
+    ],
+    "top_distance": 0.2975894303669421,
+    "top3_average_distance": 0.3393482376381909
+  },
+  {
+    "id": "pl-news-result",
+    "language": "pl",
+    "question": "Który model popełnił najmniej błędów w News Extractor?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "Naive Bayes",
+      "24"
+    ],
+    "answer": "Najmniej błędów popełnił model **Naive Bayes** — 24 błędne klasyfikacje na zbiorze testowym liczącym 302 rekordy. [2]",
+    "citations": [
+      2
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.news-extractor",
+        "section": "Źródła i zakres dokumentu",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.31793107209208504
+      },
+      {
+        "number": 2,
+        "document_id": "project.news-extractor",
+        "section": "Ewaluacja klasyfikacji",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.3757423102008235
+      },
+      {
+        "number": 3,
+        "document_id": "project.news-extractor",
+        "section": "Ograniczenia i dalszy rozwój",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.39118392343284614
+      },
+      {
+        "number": 4,
+        "document_id": "project.news-extractor",
+        "section": "Ekstrakcja informacji",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.3956131880511523
+      },
+      {
+        "number": 5,
+        "document_id": "project.news-extractor",
+        "section": "Kontekst i cel projektu",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.4090526222603935
+      },
+      {
+        "number": 6,
+        "document_id": "project.news-extractor",
+        "section": "Mój wkład i zdobyte umiejętności",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.43618016166429185
+      },
+      {
+        "number": 7,
+        "document_id": "project.news-extractor",
+        "section": "Modele klasyfikacyjne",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.43903665755337473
+      },
+      {
+        "number": 8,
+        "document_id": "project.news-extractor",
+        "section": "Dane i przygotowanie tekstu",
+        "subsection": null,
+        "source_path": "/projekty/news-extractor",
+        "distance": 0.43960784169422684
+      }
+    ],
+    "top_distance": 0.31793107209208504,
+    "top3_average_distance": 0.3616191019085849
+  },
+  {
+    "id": "pl-ai-status",
+    "language": "pl",
+    "question": "Czy AI Portfolio Assistant ma już zaimplementowany RAG?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "RAG nie jest jeszcze przedstawiany jako ukończona funkcjonalność"
+    ],
+    "answer": "Nie. RAG jest planowany, ale nie został jeszcze zaimplementowany. Część konwersacyjna AI, embeddings i wyszukiwanie wektorowe nie są obecnie ukończone ani prezentowane jako gotowe funkcjonalności. [3]",
+    "citations": [
+      3
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowane funkcjonalności dodatkowe",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.34321722613892003
+      },
+      {
+        "number": 2,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowana architektura AI",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.35725770472301843
+      },
+      {
+        "number": 3,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Aktualny stan implementacji",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.37938149527556375
+      },
+      {
+        "number": 4,
+        "document_id": "profile.skills",
+        "section": "Aktualnie rozwijane kompetencje",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.3858499247096533
+      },
+      {
+        "number": 5,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowany stack i decyzje techniczne",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.3983124130925635
+      },
+      {
+        "number": 6,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Kontekst i cel projektu",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.39952362595652335
+      },
+      {
+        "number": 7,
+        "document_id": "profile.skills",
+        "section": "LLM i integracja API",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4024999637990807
+      },
+      {
+        "number": 8,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Bezpieczeństwo i prywatność",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.417207105813597
+      }
+    ],
+    "top_distance": 0.34321722613892003,
+    "top3_average_distance": 0.35995214204583403
+  },
+  {
+    "id": "pl-attention",
+    "language": "pl",
+    "question": "Jak tworzono rankingi wag attention w pracy magisterskiej?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "wagi ze zbioru testowego",
+      "uśrednianie po pacjentach",
+      "dziesięć treningów",
+      "uśrednianie między uruchomieniami"
+    ],
+    "answer": "Po zakończeniu uczenia wyznaczano wagi attention dla pacjentów ze zbioru testowego. Dla każdej serii treningowej uśredniano je po wymiarze pacjentów, otrzymując wektor średnich wag dla cech. Następnie, w głównych eksperymentach, uśredniano takie wektory z dziesięciu serii treningowych i sortowano cechy według końcowych średnich wag. Na tej podstawie tworzono ranking 15 najważniejszych cech; porównanie między architekturami obejmowało pięć najwyżej sklasyfikowanych cech. [1]\n\nRankingi odzwierciedlały względne znaczenie cech przypisywane przez moduł attention, a nie wpływ przyczynowy ani pełne wyjaśnienie predykcji modelu. [1][3]",
+    "citations": [
+      1,
+      3
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": "Sposób tworzenia rankingów",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4020373125427945
+      },
+      {
+        "number": 2,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.43975204405289536
+      },
+      {
+        "number": 3,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": "Ograniczenia interpretacyjne",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.49691649638130864
+      },
+      {
+        "number": 4,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretowalność i analiza wag attention",
+        "subsection": "Porównanie rankingów cech",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5189649204098166
+      },
+      {
+        "number": 5,
+        "document_id": "project.survival-analysis",
+        "section": "Wyniki głównego porównania",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5253279985792126
+      },
+      {
+        "number": 6,
+        "document_id": "profile.education",
+        "section": "Studia magisterskie — Informatyka",
+        "subsection": "Praca magisterska",
+        "source_path": "/o-mnie",
+        "distance": 0.5290130648714405
+      },
+      {
+        "number": 7,
+        "document_id": "project.survival-analysis",
+        "section": "Szczegółowa analiza raka prostaty",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5314640171693976
+      },
+      {
+        "number": 8,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowana ewaluacja",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5501173062376213
+      }
+    ],
+    "top_distance": 0.4020373125427945,
+    "top3_average_distance": 0.4462352843256661
+  },
+  {
+    "id": "pl-unknown-certificates",
+    "language": "pl",
+    "question": "Jakie certyfikaty AWS posiada Jakub?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "W dostarczonych źródłach nie ma informacji o certyfikatach AWS posiadanych przez Jakuba.",
+    "citations": [],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "Kim jestem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.47115447018342305
+      },
+      {
+        "number": 2,
+        "document_id": "profile.skills",
+        "section": "Bazy danych, API i narzędzia",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.516530127966186
+      },
+      {
+        "number": 3,
+        "document_id": "profile.skills",
+        "section": "Python i inżynieria oprogramowania",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.535953731324692
+      },
+      {
+        "number": 4,
+        "document_id": "profile.experience",
+        "section": "Powiązanie z dalszym rozwojem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5362429051490633
+      },
+      {
+        "number": 5,
+        "document_id": "profile.skills",
+        "section": "Aktualnie rozwijane kompetencje",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5374061959219271
+      },
+      {
+        "number": 6,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Bezpieczeństwo i prywatność",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5404399067832383
+      },
+      {
+        "number": 7,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowana ewaluacja",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5472304980890903
+      },
+      {
+        "number": 8,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.547709453681149
+      }
+    ],
+    "top_distance": 0.47115447018342305,
+    "top3_average_distance": 0.5078794431581004
+  },
+  {
+    "id": "en-llm-api",
+    "language": "en",
+    "question": "What experience does Jakub have with LLMs and APIs?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "OpenAI API",
+      "DiagnoseMe",
+      "AI Portfolio Assistant"
+    ],
+    "answer": "Jakub has hands-on LLM API integration experience from the **DiagnoseMe** project. He integrated a language model through the **OpenAI API**, built prompts from structured user data, sent API requests, and used the responses in a desktop application. [1]\n\nFor APIs more broadly, his CV lists **REST API development**. His project work includes API integration in DiagnoseMe and a **FastAPI-based** portfolio project that is under development. [1] He also has experience with Azure SQL and Entity Framework Core in DiagnoseMe. [1]\n\nHe is currently developing an **AI Portfolio Assistant** whose planned architecture includes RAG, embeddings, vector search, and evaluation. These are explicitly described as planned rather than completed production features; he has begun preparing the project’s knowledge-base documents. [1][5] He identifies RAG, embeddings, and vector databases as areas he is still learning. [1]",
+    "citations": [
+      1,
+      5
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.skills",
+        "section": "LLMs and API Integration",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4751662955379876
+      },
+      {
+        "number": 2,
+        "document_id": "profile.profile",
+        "section": "About me",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5214667649147355
+      },
+      {
+        "number": 3,
+        "document_id": "profile.profile",
+        "section": "Career direction",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5536389039256049
+      },
+      {
+        "number": 4,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Responsibilities",
+        "source_path": "/o-mnie",
+        "distance": 0.5808190385612286
+      },
+      {
+        "number": 5,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "My contribution and skills being developed",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5866545477641968
+      },
+      {
+        "number": 6,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Sources and document updates",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.6060492255971623
+      },
+      {
+        "number": 7,
+        "document_id": "profile.experience",
+        "section": "Connection to my current development",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.6133404303458097
+      },
+      {
+        "number": 8,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.6258227741060702
+      }
+    ],
+    "top_distance": 0.4751662955379876,
+    "top3_average_distance": 0.5167573214594426
+  },
+  {
+    "id": "en-survival-results",
+    "language": "en",
+    "question": "Did attention models always outperform the baseline models?",
+    "expected_behavior": "answer",
+    "expected_facts": [
+      "no",
+      "results depended on the dataset"
+    ],
+    "answer": "No. Attention-based variants improved results in some cases, particularly for leukemia, where both attention models had higher mean C-index and lower mean IBS than their baselines. AttentionDeepHit also improved both metrics on the brain-cancer dataset. [1][8]\n\nHowever, results varied by dataset and architecture. For example, AttentionDeepSurv had a lower mean C-index than DeepSurv for small-intestine cancer (0.7566 vs. 0.7714), and both attention variants had slightly lower mean C-index and higher mean IBS on lymphoma. [8] Overall, attention did not guarantee an improvement over the baseline models. [1]",
+    "citations": [
+      1,
+      8
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "project.survival-analysis",
+        "section": "Main comparison results",
+        "subsection": "Interpretation of the results",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4459720309611491
+      },
+      {
+        "number": 2,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretability and attention-weight analysis",
+        "subsection": "How the rankings were calculated",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4782816301318279
+      },
+      {
+        "number": 3,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretability and attention-weight analysis",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.4925139191072214
+      },
+      {
+        "number": 4,
+        "document_id": "project.survival-analysis",
+        "section": "Baseline models",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.49522610886772234
+      },
+      {
+        "number": 5,
+        "document_id": "project.survival-analysis",
+        "section": "Interpretability and attention-weight analysis",
+        "subsection": "Comparison of feature rankings",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5094942185750648
+      },
+      {
+        "number": 6,
+        "document_id": "project.survival-analysis",
+        "section": "Custom modifications",
+        "subsection": "AttentionDeepSurv and AttentionDeepHit",
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5221053662682175
+      },
+      {
+        "number": 7,
+        "document_id": "project.survival-analysis",
+        "section": "Detailed prostate cancer analysis",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5249629855147326
+      },
+      {
+        "number": 8,
+        "document_id": "project.survival-analysis",
+        "section": "Main comparison results",
+        "subsection": null,
+        "source_path": "/projekty/survival-analysis",
+        "distance": 0.5388561359227073
+      }
+    ],
+    "top_distance": 0.4459720309611491,
+    "top3_average_distance": 0.4722558600667328
+  },
+  {
+    "id": "en-unknown-kubernetes",
+    "language": "en",
+    "question": "How much professional experience does Jakub have with Kubernetes?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "The supplied sources do not document any professional experience with Kubernetes. They describe Jakub’s professional experience as a software engineer at PLUM from July 2023 to January 2026, focused on Python, .NET, CI/CD, application development, automation, and maintenance, but do not mention Kubernetes. [3][4]",
+    "citations": [
+      3,
+      4
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "About me",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4622119786648492
+      },
+      {
+        "number": 2,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Responsibilities",
+        "source_path": "/o-mnie",
+        "distance": 0.531668381439412
+      },
+      {
+        "number": 3,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.539237630113018
+      },
+      {
+        "number": 4,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Nature of the experience",
+        "source_path": "/o-mnie",
+        "distance": 0.5648798767288761
+      },
+      {
+        "number": 5,
+        "document_id": "profile.experience",
+        "section": "Connection to my current development",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5930844144631483
+      },
+      {
+        "number": 6,
+        "document_id": "profile.profile",
+        "section": "Languages and contact",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.6053221244393574
+      },
+      {
+        "number": 7,
+        "document_id": "profile.skills",
+        "section": "Languages",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.61059098757984
+      },
+      {
+        "number": 8,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Sources and document updates",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.6463453067888237
+      }
+    ],
+    "top_distance": 0.4622119786648492,
+    "top3_average_distance": 0.5110393300724264
+  },
+  {
+    "id": "pl-unknown-aws",
+    "language": "pl",
+    "question": "Ile lat Jakub pracował zawodowo z AWS?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "Dostarczone źródła nie zawierają informacji o zawodowej pracy Jakuba z AWS, więc nie da się określić liczby lat takiego doświadczenia.",
+    "citations": [],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.43896318813297375
+      },
+      {
+        "number": 2,
+        "document_id": "profile.profile",
+        "section": "Kim jestem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4472306985491489
+      },
+      {
+        "number": 3,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Zakres obowiązków",
+        "source_path": "/o-mnie",
+        "distance": 0.4762320510475305
+      },
+      {
+        "number": 4,
+        "document_id": "profile.skills",
+        "section": "Bazy danych, API i narzędzia",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4940559886927933
+      },
+      {
+        "number": 5,
+        "document_id": "profile.experience",
+        "section": "Powiązanie z dalszym rozwojem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4942041117076905
+      },
+      {
+        "number": 6,
+        "document_id": "profile.skills",
+        "section": "Python i inżynieria oprogramowania",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.49781020955619515
+      },
+      {
+        "number": 7,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Charakter doświadczenia",
+        "source_path": "/o-mnie",
+        "distance": 0.5054821236811688
+      },
+      {
+        "number": 8,
+        "document_id": "profile.profile",
+        "section": "Kierunek zawodowy",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5264381500363557
+      }
+    ],
+    "top_distance": 0.43896318813297375,
+    "top3_average_distance": 0.4541419792432177
+  },
+  {
+    "id": "pl-unknown-java",
+    "language": "pl",
+    "question": "Jakie projekty komercyjne Jakub stworzył w Javie?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "Dostarczone źródła nie wskazują konkretnych projektów komercyjnych stworzonych przez Jakuba w Javie. Opisują jego pracę komercyjną w PLUM z wykorzystaniem Pythona i ekosystemu .NET oraz tworzenie aplikacji i automatyzacji, ale nie wymieniają Javy. [3][7]",
+    "citations": [
+      3,
+      7
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "Projekty",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.544368501131296
+      },
+      {
+        "number": 2,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Kontekst i cel projektu",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5704899106515633
+      },
+      {
+        "number": 3,
+        "document_id": "profile.skills",
+        "section": "Python i inżynieria oprogramowania",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5719916993138384
+      },
+      {
+        "number": 4,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Mój wkład i zdobywane umiejętności",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5765176037673516
+      },
+      {
+        "number": 5,
+        "document_id": "profile.profile",
+        "section": "Kim jestem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5799788324919795
+      },
+      {
+        "number": 6,
+        "document_id": "profile.education",
+        "section": "Studia inżynierskie — Informatyka",
+        "subsection": "Praca inżynierska",
+        "source_path": "/o-mnie",
+        "distance": 0.5802907587399084
+      },
+      {
+        "number": 7,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Zakres obowiązków",
+        "source_path": "/o-mnie",
+        "distance": 0.5831917894901756
+      },
+      {
+        "number": 8,
+        "document_id": "profile.skills",
+        "section": "LLM i integracja API",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.587585139044025
+      }
+    ],
+    "top_distance": 0.544368501131296,
+    "top3_average_distance": 0.562283370365566
+  },
+  {
+    "id": "pl-unknown-kubernetes",
+    "language": "pl",
+    "question": "Jakie doświadczenie Jakub ma z Kubernetes?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "Dostarczone źródła nie zawierają informacji o doświadczeniu Jakuba Perkowskiego z Kubernetes. Wskazują natomiast na pracę z potokami GitLab CI/CD, systemami produkcyjnymi oraz planowane użycie Dockera w projekcie AI Portfolio Assistant. [2][3][8]",
+    "citations": [
+      2,
+      3,
+      8
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "Kim jestem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4376156638165678
+      },
+      {
+        "number": 2,
+        "document_id": "profile.experience",
+        "section": "Powiązanie z dalszym rozwojem",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4849133001472623
+      },
+      {
+        "number": 3,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Zakres obowiązków",
+        "source_path": "/o-mnie",
+        "distance": 0.496347146794595
+      },
+      {
+        "number": 4,
+        "document_id": "profile.skills",
+        "section": "Bazy danych, API i narzędzia",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4970883407328417
+      },
+      {
+        "number": 5,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4979635311695726
+      },
+      {
+        "number": 6,
+        "document_id": "profile.skills",
+        "section": "Python i inżynieria oprogramowania",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.4996014672582706
+      },
+      {
+        "number": 7,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Charakter doświadczenia",
+        "source_path": "/o-mnie",
+        "distance": 0.5232749468349642
+      },
+      {
+        "number": 8,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Planowany stack i decyzje techniczne",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.547322055912448
+      }
+    ],
+    "top_distance": 0.4376156638165678,
+    "top3_average_distance": 0.4729587035861417
+  },
+  {
+    "id": "en-unknown-aws-cert",
+    "language": "en",
+    "question": "Which AWS certifications does Jakub hold?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "The provided sources do not state that Jakub holds any AWS certifications.",
+    "citations": [],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "About me",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.49193164182910076
+      },
+      {
+        "number": 2,
+        "document_id": "profile.skills",
+        "section": "Languages",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5502601253086723
+      },
+      {
+        "number": 3,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Responsibilities",
+        "source_path": "/o-mnie",
+        "distance": 0.5676256900604383
+      },
+      {
+        "number": 4,
+        "document_id": "profile.profile",
+        "section": "Languages and contact",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5931550938325181
+      },
+      {
+        "number": 5,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5969985812472803
+      },
+      {
+        "number": 6,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Nature of the experience",
+        "source_path": "/o-mnie",
+        "distance": 0.6171452088433371
+      },
+      {
+        "number": 7,
+        "document_id": "profile.profile",
+        "section": "Career direction",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.6270671794650593
+      },
+      {
+        "number": 8,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Sources and document updates",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.6280586223688431
+      }
+    ],
+    "top_distance": 0.49193164182910076,
+    "top3_average_distance": 0.5366058190660704
+  },
+  {
+    "id": "en-unknown-java",
+    "language": "en",
+    "question": "What commercial Java projects has Jakub worked on?",
+    "expected_behavior": "abstain",
+    "expected_facts": [],
+    "answer": "The supplied sources do not identify any commercial Java projects Jakub has worked on. His documented commercial role at PLUM Sp. z o.o. involved software engineering with Python, .NET, and CI/CD, including driver-monitoring application modules, automation, deployment pipelines, and maintenance of legacy systems. [2][5]",
+    "citations": [
+      2,
+      5
+    ],
+    "invalid_citations": [],
+    "sources": [
+      {
+        "number": 1,
+        "document_id": "profile.profile",
+        "section": "About me",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.49550200571167247
+      },
+      {
+        "number": 2,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Responsibilities",
+        "source_path": "/o-mnie",
+        "distance": 0.5334294672560898
+      },
+      {
+        "number": 3,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "Sources and document updates",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.5463449671890247
+      },
+      {
+        "number": 4,
+        "document_id": "profile.profile",
+        "section": "Projects",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5570658572650747
+      },
+      {
+        "number": 5,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.5724665043072418
+      },
+      {
+        "number": 6,
+        "document_id": "profile.experience",
+        "section": "PLUM Sp. z o.o.",
+        "subsection": "Nature of the experience",
+        "source_path": "/o-mnie",
+        "distance": 0.5808302666555227
+      },
+      {
+        "number": 7,
+        "document_id": "project.ai-portfolio-assistant",
+        "section": "My contribution and skills being developed",
+        "subsection": null,
+        "source_path": "/projekty/ai-portfolio-assistant",
+        "distance": 0.6086942735691248
+      },
+      {
+        "number": 8,
+        "document_id": "profile.skills",
+        "section": "Python and Software Engineering",
+        "subsection": null,
+        "source_path": "/o-mnie",
+        "distance": 0.6151996366840677
+      }
+    ],
+    "top_distance": 0.49550200571167247,
+    "top3_average_distance": 0.525092146718929
+  }
+]
