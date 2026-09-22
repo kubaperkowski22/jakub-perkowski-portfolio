@@ -55,12 +55,12 @@ async def home(lang: str = DEFAULT_LANGUAGE):
 
 @app.get("/download_cv")
 async def download_cv():
-    cv_file_path = STATIC_DIR / "_Jakub_Perkowski_AI_ML_CV.pdf"
+    cv_file_path = STATIC_DIR / "JAKUB_PERKOWSKI_AI_ML_CV.pdf"
 
     if cv_file_path.exists():
         return FileResponse(
             str(cv_file_path),
-            filename="_Jakub_Perkowski_SOFTWARE_ENGINEER_CV.pdf",
+            filename="_Jakub_Perkowski_CV.pdf",
             media_type="application/pdf"
         )
     
